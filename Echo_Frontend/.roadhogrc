@@ -1,0 +1,29 @@
+{
+  "entry": "src/index.js",
+  "extraBabelPlugins": [
+    "transform-runtime",
+    ["import", { "libraryName": "antd", "style": "css" }],
+    ["module-resolver", {
+      "root": ["./src"],
+      "alias": {
+        "routes": "./src/routes",
+        "common": "./src/components/Common",
+        "users": "./src/components/Users"
+      }
+    }]
+  ],
+  "env": {
+    "development": {
+      "extraBabelPlugins": [
+        "dva-hmr"
+      ]
+    }
+  },
+  "proxy": {
+    "/api": {
+      "target": "http://127.0.0.1:3000",
+      "changeOrigin": true,
+      "pathRewrite": { "^/api" : "" }
+    }
+  }
+}
