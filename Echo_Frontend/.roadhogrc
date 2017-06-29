@@ -7,8 +7,10 @@
       "root": ["./src"],
       "alias": {
         "routes": "./src/routes",
-        "common": "./src/components/Common",
-        "users": "./src/components/Users"
+        "Common": "./src/components/Common",
+        "Users": "./src/components/Users",
+        "MainLayout": "./src/components/MainLayout",
+        "utils": "./src/utils"
       }
     }]
   ],

@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
+import { Link } from 'react-router';
 import { Dropdown, Menu } from 'antd';
-import { CustomIcon } from 'common';
+import { CustomIcon } from 'Common';
 
 const MenuItem = Menu.Item;
 
@@ -8,11 +9,12 @@ class UserDown extends Component {
   render() {
     const menu = (
       <Menu>
-        <MenuItem>个人设置</MenuItem>
+        <MenuItem>
+          <Link to='/users/profile'> 个人设置</Link>
+        </MenuItem>
         <MenuItem>登出</MenuItem>
       </Menu>
     );
-    console.log(this.props.className);
     return (
       <Dropdown overlay={menu}>
         <span className={this.props.className}>

@@ -1,7 +1,7 @@
 import React from 'react';
 import { Menu, Icon } from 'antd';
 import { Link } from 'dva/router';
-import UserDown from 'users/UserDown';
+import UserDown from 'Users/UserDown';
 import style from './Header.less';
 
 const Header = ({ location }) => {
@@ -25,7 +25,6 @@ const Header = ({ location }) => {
           <a href='https://github.com/dvajs/dva' target='_blank'>dva</a>
         </Menu.Item>
       </Menu>
-      {style.userInfo}
       <UserDown className={`${style.userInfo}`} />
     </div>
   );
