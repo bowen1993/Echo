@@ -1,16 +1,12 @@
-var express = require('express');
-var router = express.Router();
+import express from 'express';
+
+const router = express.Router();
 
 /* GET home page. */
-router.get('/', function(req, res, next) {
+router.get('/', (req, res, next) => {
   res.send({
-    title: "Echo"
+    title: 'Echo',
   });
-});
-
-router.get('/await', async (req, res, next) => {
-  await console.log('dsaf');
-  await res.send({ title: 'await'});
 });
 
 module.exports = router;
