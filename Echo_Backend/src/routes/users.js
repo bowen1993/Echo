@@ -19,8 +19,12 @@ router.get('/', function(req, res, next) {
   })
 });
 
-router.post('/login_success', (req, res, next) => {
+router.get('/getCsrf', (req, res, next) => {
+  res.send({ csrf: csrf_guid})
+})
 
+router.post('/login_success', (req, response, next) => {
+  console.log('login_success')
   // CSRF check
   if (req.body.state === csrf_guid) {
     var app_access_token = ['AA', app_id, app_secret].join('|');
@@ -60,9 +64,11 @@ router.post('/login_success', (req, res, next) => {
   } 
   else {
     // login failed
-    response.writeHead(200, {'Content-Type': 'text/html'});
+    response.writeHead(400, {'Content-Type': 'text/html'});
     response.end("Something went wrong. :( ");
   }
 })
+
+
 
 module.exports = router;

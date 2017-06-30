@@ -8,4 +8,9 @@ router.get('/', function(req, res, next) {
   });
 });
 
+router.get('/await', async (req, res, next) => {
+  await console.log('dsaf');
+  await res.send({ title: 'await'});
+});
+
 module.exports = router;

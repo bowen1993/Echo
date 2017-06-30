@@ -10,5 +10,10 @@ router.get('/', function (req, res, next) {
   });
 });
 
+router.get('/await', async function (req, res, next) {
+  await console.log('dsaf');
+  await res.send({ title: 'await' });
+});
+
 module.exports = router;
 //# sourceMappingURL=index.js.map
