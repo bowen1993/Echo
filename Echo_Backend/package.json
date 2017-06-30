@@ -16,6 +16,7 @@
     "fibers": "^2.0.0",
     "guid": "^0.0.12",
     "js-base64": "^2.1.9",
+    "moniker": "^0.1.2",
     "morgan": "~1.6.1",
     "querystring": "^0.2.0",
     "request": "^2.81.0",

@@ -2,6 +2,7 @@ import express from 'express';
 const Request  = require('request').defaults({'proxy': 'http://127.0.0.1:8087'});;
 import Querystring from 'querystring';
 import Guid from 'guid';
+import userAction from '../services/userAction'
 
 const router = express.Router();
 const csrf_guid = Guid.raw();
@@ -14,6 +15,7 @@ const token_exchange_base_url = 'https://graph.accountkit.com/v1.1/access_token'
 
 /* GET users listing. */
 router.get('/', function(req, res, next) {
+  // userAction.createNewUser('123456', 'haha');
   res.send({
     'username': "Bowen"
   })
@@ -52,6 +54,7 @@ router.post('/login_success', (req, res, next) => {
         }
 
         // store & get user
+        userAction.createNewUser(view.phone_num, view.email_addr);
 
         response.writeHead(200, {'Content-Type': 'text/html'});
           response.end("233333 :( ");
