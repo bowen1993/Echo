@@ -1,33 +1,35 @@
 import React from 'react';
-import { Menu, Icon } from 'antd';
-import { Link } from 'dva/router';
+import { Button } from 'antd';
+import AccountKit from 'react-facebook-account-kit';
 import UserDown from 'Users/UserDown';
 import style from './Header.less';
 
-const Header = ({ location }) => {
-  return (
-    <div className={`${style.header}`}>
-      <Menu
-        selectedKeys={[location.pathname]}
-        mode='horizontal'
-        theme='dark'
-      >
-        <Menu.Item key='/users'>
-          <Link to='/users'><Icon type='bars' />Users</Link>
-        </Menu.Item>
-        <Menu.Item key='/'>
-          <Link to='/'><Icon type='home' />Home</Link>
-        </Menu.Item>
-        <Menu.Item key='/404'>
-          <Link to='/page-you-dont-know'><Icon type='frown-circle' />404</Link>
-        </Menu.Item>
-        <Menu.Item key='/antd'>
-          <a href='https://github.com/dvajs/dva' target='_blank'>dva</a>
-        </Menu.Item>
-      </Menu>
-      <UserDown className={`${style.userInfo}`} />
-    </div>
-  );
-};
+class Header extends React.Component {
+  componentDidMount() {
+    this.props.onGetCsrf();
+  }
+  render() {
+    const { loginUser, CSRF, checkLogin } = this.props;
+    return (
+      <div className={`${style.header}`}>
+        {
+          loginUser && <UserDown className={`${style.userInfo}`} />
+        }
+        { CSRF &&
+          <AccountKit
+            appId='154086658467747' // Update this!
+            version='v1.1' // Version must be in form v{major}.{minor}
+            onResponse={resp => checkLogin(resp)}
+            csrf={CSRF} // Required for security
+            language='zh_CN'
+          >
+            {p => <Button {...p} className={`${style.userInfo}`}>Login</Button>}
+          </AccountKit>
+        }
+      </div>
+    );
+  }
+
+}
 
 export default Header;

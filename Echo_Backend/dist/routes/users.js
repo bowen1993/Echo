@@ -30,17 +30,25 @@ var me_endpoint_base_url = 'https://graph.accountkit.com/v1.1/me';
 var token_exchange_base_url = 'https://graph.accountkit.com/v1.1/access_token';
 
 /* GET users listing. */
-router.get('/', function (req, res, next) {
-  _userAction2.default.createNewUser('123456', 'haha');
-  res.send({
-    'username': "Bowen"
+router.get('/test', function (req, res, next) {
+  var num = req.query.num;
+  console.log(num);
+  _userAction2.default.createNewUser(num, 'haha').then(function (isSucess) {
+    // if new user created, isSuccess would be true, else false (user exists)
+    res.send({
+      'username': isSucess
+    });
   });
 });
 
-router.post('/login_success', function (req, res, next) {
+router.get('/getCsrf', function (req, res, next) {
+  res.send({ csrf: csrf_guid });
+});
 
+router.post('/login_success', function (req, response, next) {
+  console.log('login_success'
   // CSRF check
-  if (req.body.state === csrf_guid) {
+  );if (req.body.state === csrf_guid) {
     var app_access_token = ['AA', app_id, app_secret].join('|');
     var params = {
       grant_type: 'authorization_code',
@@ -53,6 +61,9 @@ router.post('/login_success', function (req, res, next) {
 
     Request.get({ url: token_exchange_url, rejectUnauthorized: false, json: true }, function (err, resp, respBody) {
       // console.log(err, resp, respBody)
+      if (err) {
+        response.writeHead(400, { 'Content-Type': 'text/html' });
+      }
       var view = {
         user_access_token: respBody.access_token,
         expires_at: respBody.expires_at,
@@ -70,7 +81,6 @@ router.post('/login_success', function (req, res, next) {
         }
 
         // store & get user
-        _userAction2.default.createNewUser(view.phone_num, view.email_addr);
 
         response.writeHead(200, { 'Content-Type': 'text/html' });
         response.end("233333 :( ");
@@ -78,7 +88,7 @@ router.post('/login_success', function (req, res, next) {
     });
   } else {
     // login failed
-    response.writeHead(200, { 'Content-Type': 'text/html' });
+    response.writeHead(400, { 'Content-Type': 'text/html' });
     response.end("Something went wrong. :( ");
   }
 });

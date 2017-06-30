@@ -14,15 +14,23 @@ const token_exchange_base_url = 'https://graph.accountkit.com/v1.1/access_token'
 
 
 /* GET users listing. */
-router.get('/', function(req, res, next) {
-  // userAction.createNewUser('123456', 'haha');
-  res.send({
-    'username': "Bowen"
-  })
+router.get('/test', function(req, res, next) {
+  var num = req.query.num;
+  // console.log(num)
+  userAction.createNewUser(num, 'haha').then((isSucess) => {
+    // if new user created, isSuccess would be true, else false (user exists)
+    res.send({
+      'username': isSucess
+    })
+  });
 });
 
-router.post('/login_success', (req, res, next) => {
+router.get('/getCsrf', (req, res, next) => {
+  res.send({ csrf: csrf_guid})
+})
 
+router.post('/login_success', (req, response, next) => {
+  console.log('login_success')
   // CSRF check
   if (req.body.state === csrf_guid) {
     var app_access_token = ['AA', app_id, app_secret].join('|');
@@ -37,6 +45,10 @@ router.post('/login_success', (req, res, next) => {
 
     Request.get({url: token_exchange_url,  rejectUnauthorized: false, json: true}, function(err, resp, respBody) {
       // console.log(err, resp, respBody)
+      if ( err ){
+        response.writeHead(400, {'Content-Type': 'text/html'});
+        return;
+      }
       var view = {
         user_access_token: respBody.access_token,
         expires_at: respBody.expires_at,
@@ -52,9 +64,16 @@ router.post('/login_success', (req, res, next) => {
         } else if (respBody.email) {
           view.email_addr = respBody.email.address;
         }
-
+        
+        if ( !view.phone_num ){
+          response.writeHead(400, {'Content-Type': 'text/html'});
+          return;
+        }
         // store & get user
-        userAction.createNewUser(view.phone_num, view.email_addr);
+        userAction.createNewUser(view.phone_num, view.email_addr).then((isSucess) => {
+          // if new user created, isSuccess would be true, else false (user exists)
+          
+        });
 
         response.writeHead(200, {'Content-Type': 'text/html'});
           response.end("233333 :( ");
@@ -63,9 +82,11 @@ router.post('/login_success', (req, res, next) => {
   } 
   else {
     // login failed
-    response.writeHead(200, {'Content-Type': 'text/html'});
+    response.writeHead(400, {'Content-Type': 'text/html'});
     response.end("Something went wrong. :( ");
   }
 })
+
+
 
 module.exports = router;

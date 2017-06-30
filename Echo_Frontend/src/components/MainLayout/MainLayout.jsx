@@ -2,10 +2,10 @@ import React from 'react';
 import style from './MainLayout.less';
 import Header from './Header';
 
-const MainLayout = ({ children, location }) => {
+const MainLayout = ({ children, ...otherProps }) => {
   return (
     <div className='mainlayout'>
-      <Header className={`${style.header}`} location={location} />
+      <Header className={`${style.header}`} {...otherProps} />
       <div className={`${style.content}`}>
         {children}
       </div>

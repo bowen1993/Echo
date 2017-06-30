@@ -2,7 +2,7 @@ import * as UserService from '../services/users';
 
 export default {
   namespace: 'users',
-  state: { user: 1 },
+  state: { user: 1, crsf: null },
   reducers: {
     querySuccess(state, action) {
       return { ...state, ...action.payload };
@@ -17,9 +17,12 @@ export default {
       });
     },
     * checkLogin({ payload: { params } }, { call }) {
-      console.log('begin', params);
       const payload = yield call(UserService.checkLogin, params);
-      console.log(payload);
+    },
+    * getCsrf(action, { call, put }) {
+      const crsf = yield call(UserService.getCsrf);
+      console.log(crsf);
+      yield put({ type: 'querySuccess', payload: crsf });
     },
   },
   subscriptions: {},
