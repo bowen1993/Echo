@@ -39,6 +39,10 @@ var User = model.createModel('User', {
     description: UString()
 });
 
+var Tag = model.createModel('Tag', {
+    name: UString()
+});
+
 module.exports = {
     User: User,
     getSession: getSession

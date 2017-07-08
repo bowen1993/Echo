@@ -27,15 +27,49 @@ async function isPhoneExists(phoneNum, userDao) {
     });
 }
 
+async function isUserExists(userId, userDao) {
+    console.log('finding');
+    var user = await userDao.findOne({
+        id: userId
+    });
+    console.log('found finish');
+    var isUserExists = user != null;
+
+    return new _promise2.default(function (resolve) {
+        resolve(isUserExists);
+    });
+}
+
+async function updateUsername(userId, newUsername) {
+    //get db session
+    var session = await _models2.default.getSession();
+    var userDao = session.getDao(User);
+
+    console.log('start');
+    var isSuccessful = await isUserExists(userId, userDao);
+    console.log(isSuccessful);
+
+    if (isSuccessful) {
+        var updatedInfo = {
+            username: newUsername
+        };
+        await updateUserInfo(userId, updatedInfo, userDao);
+    }
+
+    return new _promise2.default(function (resolve) {
+        resolve(isSuccessful);
+    });
+}
+
 async function createNewUser(phoneNum, email) {
     var username = arguments.length > 2 && arguments[2] !== undefined ? arguments[2] : null;
 
-    console.log(phoneNum, email
     //get db session
-    );var session = await _models2.default.getSession();
+    var session = await _models2.default.getSession();
     var userDao = session.getDao(User);
+
     var isUserExists = await isPhoneExists(phoneNum, userDao);
-    console.log(isUserExists);
+
     if (!isUserExists) {
         if (username == null) {
             // generate random username
@@ -58,11 +92,7 @@ async function createNewUser(phoneNum, email) {
     });
 }
 
-async function updateUserInfo(userId, updatedInfo) {
-    //get db session
-    var session = await _models2.default.getSession();
-    var userDao = session.getDao(User);
-
+async function updateUserInfo(userId, updatedInfo, userDao) {
     await userDao.update({
         id: userId
     }, {
@@ -71,6 +101,7 @@ async function updateUserInfo(userId, updatedInfo) {
 }
 
 module.exports = {
-    createNewUser: createNewUser
+    createNewUser: createNewUser,
+    updateUsername: updateUsername
 };
 //# sourceMappingURL=userAction.js.map
