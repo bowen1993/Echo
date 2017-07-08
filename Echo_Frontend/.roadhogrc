@@ -2,7 +2,7 @@
   "entry": "src/index.js",
   "extraBabelPlugins": [
     "transform-runtime",
-    ["import", { "libraryName": "antd", "style": "css" }],
+    ["import", { "libraryName": "antd", "style": true }],
     ["module-resolver", {
       "root": ["./src"],
       "alias": {
@@ -27,5 +27,6 @@
       "changeOrigin": true,
       "pathRewrite": { "^/api" : "" }
     }
-  }
+  },
+  "theme": "./src/style/theme.js"
 }
