@@ -62,7 +62,9 @@ const Comment = model.createModel('Comment', {
         type: User
     }),
     createTime:UDateTime(),
-    
+    comments: UObjectArray({
+        type:Comment
+    })
 })
 
 const Answer = model.createModel('Answer', {
@@ -74,6 +76,9 @@ const Answer = model.createModel('Answer', {
     lastModifyTime: UDateTime(),
     rate: UObject({
         type:Rate
+    }),
+    comments: UObjectArray({
+        type: Comment
     })
 });
 
@@ -85,6 +90,9 @@ const Question = model.createModel('Question', {
     createTime: UDateTime(),
     rate: UObject({
         type: Rate
+    }),
+    answers: UObjectArray({
+        type: Answer
     })
 });
 
@@ -92,5 +100,11 @@ const Question = model.createModel('Question', {
 
 module.exports = {
     User,
+    Tag,
+    Rate,
+    Category,
+    Comment,
+    Question,
+    Answer,
     getSession
 }

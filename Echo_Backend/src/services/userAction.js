@@ -84,7 +84,24 @@ async function updateUserInfo(userId, updatedInfo, userDao){
     });
 }
 
+async function getUserObjById(userId){
+    //get db session & user DAO
+    const session = model.getSession();
+    const userDao = session.getDao(User);
+
+    let userObj = userDao.findOne({
+        id:userId
+    });
+
+    return new Promise( resolve => {
+        resolve(userObj);
+    });
+}
+
+
+
 module.exports = {
     createNewUser,
-    updateUsername
+    updateUsername,
+    getUserObjById
 }
