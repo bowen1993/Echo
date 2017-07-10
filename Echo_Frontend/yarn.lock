@@ -1737,6 +1737,12 @@ draft-js@^0.10.0, draft-js@~0.10.0:
     immutable "~3.7.4"
     object-assign "^4.1.0"
 
+draftjs-utils@^0.7.5:
+  version "0.7.5"
+  resolved "http://registry.npm.taobao.org/draftjs-utils/download/draftjs-utils-0.7.5.tgz#982b671bf9b8296c89b05683e63257817d30de55"
+  dependencies:
+    immutable "^3.x.x"
+
 duplexer@^0.1.1:
   version "0.1.1"
   resolved "http://registry.npm.taobao.org/duplexer/download/duplexer-0.1.1.tgz#ace6ff808c1ce66b57d1ebf97977acb02334cfc1"
@@ -2701,9 +2707,13 @@ image-size@~0.5.0:
   version "0.5.5"
   resolved "http://registry.npm.taobao.org/image-size/download/image-size-0.5.5.tgz#09dfd4ab9d20e29eb1c3e80b8990378df9e3cb9c"
 
-immutable@^3.7.4, immutable@^3.8.1:
+immutable@^3.7.4, immutable@^3.8.1, immutable@^3.x.x:
   version "3.8.1"
   resolved "http://registry.npm.taobao.org/immutable/download/immutable-3.8.1.tgz#200807f11ab0f72710ea485542de088075f68cd2"
+
+immutable@^4.0.0-rc.1:
+  version "4.0.0-rc.2"
+  resolved "http://registry.npm.taobao.org/immutable/download/immutable-4.0.0-rc.2.tgz#fdd0948aae728fda2306a02f72bb73e1773432d1"
 
 immutable@~3.7.4:
   version "3.7.6"
@@ -3059,8 +3069,8 @@ istanbul@^0.4.5:
     wordwrap "^1.0.0"
 
 jquery@>=1.7.2:
-  version "3.2.1"
-  resolved "http://registry.npm.taobao.org/jquery/download/jquery-3.2.1.tgz#5c4d9de652af6cd0a770154a631bba12b015c787"
+  version "2.1.4"
+  resolved "http://registry.npm.taobao.org/jquery/download/jquery-2.1.4.tgz#228bde698a0c61431dc2630a6a154f15890d2317"
 
 js-base64@^2.1.9:
   version "2.1.9"
@@ -4615,13 +4625,22 @@ react-dom@^0.14.0:
   version "0.14.9"
   resolved "http://registry.npm.taobao.org/react-dom/download/react-dom-0.14.9.tgz#05064a3dcf0fb1880a3b2bfc9d58c55d8d9f6293"
 
-react-dom@^15.4.0:
+react-dom@^15.6.1:
   version "15.6.1"
   resolved "http://registry.npm.taobao.org/react-dom/download/react-dom-15.6.1.tgz#2cb0ed4191038e53c209eb3a79a23e2a4cf99470"
   dependencies:
     fbjs "^0.8.9"
     loose-envify "^1.1.0"
     object-assign "^4.1.0"
+    prop-types "^15.5.10"
+
+react-draft-wysiwyg@^1.10.0:
+  version "1.10.0"
+  resolved "http://registry.npm.taobao.org/react-draft-wysiwyg/download/react-draft-wysiwyg-1.10.0.tgz#110d887364bedcd4a6eabdb69d244e162e04e095"
+  dependencies:
+    classnames "^2.2.5"
+    draftjs-utils "^0.7.5"
+    immutable "^4.0.0-rc.1"
     prop-types "^15.5.10"
 
 react-facebook-account-kit@^0.1.0:
@@ -4684,7 +4703,7 @@ react@^0.14.0:
     envify "^3.0.0"
     fbjs "^0.6.1"
 
-react@^15.4.0:
+react@^15.6.1:
   version "15.6.1"
   resolved "http://registry.npm.taobao.org/react/download/react-15.6.1.tgz#baa8434ec6780bde997cdc380b79cd33b96393df"
   dependencies:
