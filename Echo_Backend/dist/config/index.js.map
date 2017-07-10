@@ -1,1 +1,0 @@
-{"version":3,"sources":["config/index.js"],"names":["module","exports"],"mappings":";;AAAA;;;;;;AAEAA,OAAOC,OAAP,GAAiB;AACb;AADa,CAAjB","file":"index.js","sourcesContent":["import database from './database'\n\nmodule.exports = {\n    'database': database\n};\n"]}
