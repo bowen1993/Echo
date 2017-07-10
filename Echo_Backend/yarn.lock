@@ -2169,6 +2169,10 @@ mongodb@latest:
     mongodb-core "2.1.13"
     readable-stream "2.2.7"
 
+moniker@^0.1.2:
+  version "0.1.2"
+  resolved "http://registry.npm.taobao.org/moniker/download/moniker-0.1.2.tgz#872dfba575dcea8fa04a5135b13d5f24beccc97e"
+
 morgan@~1.6.1:
   version "1.6.1"
   resolved "http://registry.npm.taobao.org/morgan/download/morgan-1.6.1.tgz#5fd818398c6819cba28a7cd6664f292fe1c0bbf2"
@@ -2943,14 +2947,12 @@ underscore@^1.8.3:
   version "1.8.3"
   resolved "http://registry.npm.taobao.org/underscore/download/underscore-1.8.3.tgz#4f3fb53b106e6097fcf9cb4109f2a5e9bdfa5022"
 
-unique-model@^0.1.6:
-  version "0.1.6"
-  resolved "http://registry.npm.taobao.org/unique-model/download/unique-model-0.1.6.tgz#a0829e02f5090cbd61aa486ccad04a9df7cfecd9"
+unique-model@^0.1.7:
+  version "0.1.7"
+  resolved "http://registry.npm.taobao.org/unique-model/download/unique-model-0.1.7.tgz#3fc181ba1f2ccfb6256a96d8ad26a4a1e4bad779"
   dependencies:
     babel-core latest
     babel-polyfill latest
-    babel-preset-es2015 latest
-    babel-preset-stage-0 latest
     ktoolkit latest
     mongodb latest
 
