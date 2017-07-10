@@ -60,3 +60,5 @@ typings/
 # Mac Finder file
 .DS_Store
 */.DS_Store
+
+*/dist
