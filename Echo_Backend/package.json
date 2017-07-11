@@ -15,6 +15,7 @@
     "debug": "~2.2.0",
     "ejs": "^2.5.6",
     "express": "~4.13.1",
+    "express-session": "^1.15.3",
     "fibers": "^2.0.0",
     "guid": "^0.0.12",
     "gulp-nodemon": "^2.2.1",
