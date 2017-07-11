@@ -17,11 +17,10 @@ const tokenExchangeBaseUrl = 'https://graph.accountkit.com/v1.1/access_token';
 /* GET users listing. */
 router.get('/test', (req, res) => {
   const num = req.query.num;
-  var id = req.query.id;
-  // console.log(num)
+  const id = req.query.id;
   userAction.updateUsername(id, num).then((result) => {
-    res.send({'res':result});
-  })
+    res.send({ res: result });
+  });
 });
 
 router.get('/getCsrf', (req, res) => {
@@ -67,14 +66,23 @@ router.post('/login_success', (req, response) => {
           response.writeHead(400, { 'Content-Type': 'text/html' });
           return;
         }
+        console.log('test');
         // store & get user
-        userAction.createNewUser(view.phone_num, view.email_addr).then((isSucess) => {
+        userAction.createNewUser(view.phone_num, view.email_addr).then((isSucess, user) => {
           // if new user created, isSuccess would be true, else false (user exists)
-
+          console.log('user', currentUser);
+          const currentUser = Object.assign({}, user, { isNew: isSucess });
+          console.log(currentUser);
+          response.send(currentUser);
+          // console.log('dsafdsa', user);
+          // response.writeHead(200, { 'Content-Type': 'text/html' });
+          // response.session.user = user;
+          // response.redirect('/1');
+          // response.end('233333 :( ');
         });
 
-        response.writeHead(200, { 'Content-Type': 'text/html' });
-        response.end('233333 :( ');
+        // response.writeHead(200, { 'Content-Type': 'text/html' });
+        // response.end('233333 :( ');
       });
     });
   } else {

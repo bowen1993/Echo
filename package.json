@@ -1,6 +1,7 @@
 {
   "dependencies": {
     "babel-eslint": "^7.2.3",
+    "express-session": "^1.15.3",
     "react-facebook-account-kit": "^0.1.0"
   },
   "devDependencies": {
