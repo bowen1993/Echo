@@ -5,7 +5,7 @@ import json
 def get_sentiments(topic):
     twitterInput = {
         "query": topic,
-        "numTweets": "1000",
+        "numTweets": "10",
         "auth": {
             "app_key": TWITTER['APP_KEY'],
             "app_secret": TWITTER['APP_SECRET'],
@@ -15,7 +15,8 @@ def get_sentiments(topic):
     }
     client = Algorithmia.client(API_KEY)
     algo = client.algo('nlp/AnalyzeTweets/0.1.9')
-    result = algo.pipe(twitterInput)
-    return result
-
-print get_sentiments("Trump")
+    try:
+        response = algo.pipe(twitterInput).result
+        return response
+    except:
+        return None
