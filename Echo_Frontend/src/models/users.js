@@ -5,6 +5,7 @@ export default {
   state: { user: 1, crsf: null },
   reducers: {
     querySuccess(state, action) {
+      console.log(action.payload);
       return { ...state, ...action.payload };
     },
   },
@@ -16,8 +17,12 @@ export default {
         payload: { user },
       });
     },
-    * checkLogin({ payload: { params } }, { call }) {
-      const payload = yield call(UserService.checkLogin, params);
+    * checkLogin({ payload: { params } }, { call, put }) {
+      const user = yield call(UserService.checkLogin, params);
+      yield put({
+        type: 'querySuccess',
+        payload: { user },
+      });
     },
     * getCsrf(action, { call, put }) {
       const crsf = yield call(UserService.getCsrf);

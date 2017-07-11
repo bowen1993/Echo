@@ -14,9 +14,17 @@ gulp.task('default', () => {
 });
 
 gulp.task('start', () => {
-  nodemon({
-    script: 'dist/app.js.map',
-    ext: 'js html',
+  return nodemon({
+    script: 'dist/app.js',
+    ext: 'js',
     env: { NODE_ENV: 'development' },
+  });
+});
+
+gulp.task('watch', ['es6'], () => {
+  return nodemon({
+    script: 'bin/www',
+    watch: 'src',
+    tasks: ['es6'],
   });
 });

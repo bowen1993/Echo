@@ -28,6 +28,7 @@ router.get('/getCsrf', (req, res) => {
 });
 
 router.post('/login_success', (req, response) => {
+  console.log('begin', req.body.state === csrfGuid, req.body.state, csrfGuid);
   // CSRF check
   if (req.body.state === csrfGuid) {
     const appAccessToken = ['AA', appId, appSecret].join('|');
@@ -68,17 +69,18 @@ router.post('/login_success', (req, response) => {
         }
         console.log('test');
         // store & get user
-        userAction.createNewUser(view.phone_num, view.email_addr).then((isSucess, user) => {
+        userAction.createNewUser(view.phone_num, view.email_addr).then((currentUser) => {
           // if new user created, isSuccess would be true, else false (user exists)
-          console.log('user', currentUser);
-          const currentUser = Object.assign({}, user, { isNew: isSucess });
-          console.log(currentUser);
-          response.send(currentUser);
+          console.log('currentUser', currentUser);
           // console.log('dsafdsa', user);
           // response.writeHead(200, { 'Content-Type': 'text/html' });
-          // response.session.user = user;
+          req.session.user = currentUser;
+          console.log('2');
+          response.send(JSON.stringify(currentUser));
           // response.redirect('/1');
+          console.log('3');
           // response.end('233333 :( ');
+          console.log('4');
         });
 
         // response.writeHead(200, { 'Content-Type': 'text/html' });

@@ -5,7 +5,7 @@
   "scripts": {
     "build": "gulp",
     "start": "node ./bin/www",
-    "test": "babel-node src/app.js"
+    "watch": "nodemon src/app.js"
   },
   "dependencies": {
     "babel-preset-stage-2": "^6.24.1",

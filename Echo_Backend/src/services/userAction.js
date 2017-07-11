@@ -9,9 +9,7 @@ async function isPhoneExists(phoneNum, userDao) {
   });
   const isUserExists = !!user;
 
-  return new Promise((resolve) => {
-    resolve(isUserExists);
-  });
+  return isUserExists;
 }
 
 async function isUserExists(userId, userDao) {
@@ -51,7 +49,7 @@ async function createNewUser(phoneNum, email, username = null) {
   const userDao = session.getDao(User);
 
   const isUserExists = await isPhoneExists(phoneNum, userDao);
-  console.log(phoneNum, email, username);
+  console.log(isUserExists);
   let newUser = null;
   if (!isUserExists) {
     if (username == null) {
@@ -69,11 +67,12 @@ async function createNewUser(phoneNum, email, username = null) {
     // save new user
     await userDao.create(newUser);
   } else {
-    await findUserByPhone(phoneNum).then(user => newUser = user);
+    newUser = await findUserByPhone(phoneNum);
   }
-  console.log('kkkk', newUser);
+  // newUser = await Object.assign({}, newUser, { isUserExists });
+  // await console.log('1234', newUser, isUserExists);
   return new Promise((resolve) => {
-    resolve(!isUserExists, newUser);
+    resolve(newUser);
   });
 }
 
@@ -92,9 +91,7 @@ const findUserByPhone = async (phoneNum) => {
   const user = await userDao.findOne({
     phoneNum,
   });
-  return new Promise((resolve) => {
-    resolve(user);
-  });
+  return user;
 };
 
 module.exports = {
