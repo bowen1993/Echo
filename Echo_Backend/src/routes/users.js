@@ -1,6 +1,7 @@
 import express from 'express';
 import Querystring from 'querystring';
 import Guid from 'guid';
+import cookie from 'cookie-parser';
 import userAction from '../services/userAction';
 
 const Request = require('request').defaults({ proxy: 'http://127.0.0.1:8087' });
@@ -27,8 +28,7 @@ router.get('/getCsrf', (req, res) => {
   res.send({ csrf: csrfGuid });
 });
 
-router.post('/login_success', (req, response) => {
-  console.log('begin', req.body.state === csrfGuid, req.body.state, csrfGuid);
+router.post('/login_success', (req, res) => {
   // CSRF check
   if (req.body.state === csrfGuid) {
     const appAccessToken = ['AA', appId, appSecret].join('|');
@@ -42,9 +42,8 @@ router.post('/login_success', (req, response) => {
     const tokenExchangeUrl = `${tokenExchangeBaseUrl}?${Querystring.stringify(params)}`;
 
     Request.get({ url: tokenExchangeUrl, rejectUnauthorized: false, json: true }, (err, resp, respBody) => {
-      // console.log(err, resp, respBody)
       if (err) {
-        response.writeHead(400, { 'Content-Type': 'text/html' });
+        res.writeHead(400, { 'Content-Type': 'text/html' });
         return;
       }
       const view = {
@@ -64,23 +63,15 @@ router.post('/login_success', (req, response) => {
         }
 
         if (!view.phone_num) {
-          response.writeHead(400, { 'Content-Type': 'text/html' });
+          res.writeHead(400, { 'Content-Type': 'text/html' });
           return;
         }
-        console.log('test');
         // store & get user
         userAction.createNewUser(view.phone_num, view.email_addr).then((currentUser) => {
           // if new user created, isSuccess would be true, else false (user exists)
-          console.log('currentUser', currentUser);
-          // console.log('dsafdsa', user);
-          // response.writeHead(200, { 'Content-Type': 'text/html' });
           req.session.user = currentUser;
-          console.log('2');
-          response.send(JSON.stringify(currentUser));
-          // response.redirect('/1');
-          console.log('3');
-          // response.end('233333 :( ');
-          console.log('4');
+          res.set({ 'Access-Control-Allow-Credentials': true });
+          res.send(currentUser);
         });
 
         // response.writeHead(200, { 'Content-Type': 'text/html' });
@@ -94,5 +85,15 @@ router.post('/login_success', (req, response) => {
   }
 });
 
+router.get('/logout', (req, res) => {
+  req.session.user = {};
+  res.writeHead(200, { 'Content-Type': 'text/html' });
+});
+
+router.get('/currentUser', (req, res) => {
+  console.log(req.session);
+  req.session.test = 'dsf';
+  return res.send(req.session.user || {});
+});
 
 module.exports = router;

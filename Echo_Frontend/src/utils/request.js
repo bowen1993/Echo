@@ -30,25 +30,25 @@ function checkStatus(response) {
 // }
 
 const get = async (url, params) => {
-  const response = await fetch(`${url}?${Querystring.stringify(params)}`);
+  const response = await fetch(`${url}?${Querystring.stringify(params)}`, { method: 'GET', mode: 'cors', credentials: 'include' });
   checkStatus(response);
   const data = await response.json();
   return data;
 };
 const put = async (url, params) => {
-  const response = await fetch(url, { method: 'PUT', headers: { 'Content-type': 'application/json' }, body: JSON.stringify(params) });
+  const response = await fetch(url, { method: 'PUT', headers: { 'Content-type': 'application/json', mode: 'cors', credentials: 'include' }, body: JSON.stringify(params) });
   checkStatus(response);
   const data = await response.json();
   return data;
 };
 const post = async (url, params) => {
-  const response = await fetch(url, { method: 'POST', headers: { 'Content-type': 'application/json' }, body: JSON.stringify(params) });
+  const response = await fetch(url, { method: 'POST', headers: { 'Content-type': 'application/json', mode: 'cors', credentials: 'include' }, body: JSON.stringify(params) });
   checkStatus(response);
   const data = await response.json();
   return data;
 };
 const del = async (url, params) => {
-  const response = await fetch(`${url}?${Querystring.stringify(params)}`, { method: 'DELETE' });
+  const response = await fetch(`${url}?${Querystring.stringify(params)}`, { method: 'DELETE', mode: 'cors', credentials: 'include' });
   checkStatus(response);
   const data = await response.json();
   return data;

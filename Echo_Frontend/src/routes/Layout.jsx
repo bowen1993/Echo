@@ -16,6 +16,12 @@ const mapDispatchToProps = (dispatch, ownProps) => {
     checkLogin: (params) => {
       dispatch({ type: 'users/checkLogin', payload: { params } });
     },
+    check: () => {
+      dispatch({ type: 'users/onGetCurrentUser' });
+    },
+    onLogout: () => {
+      dispatch({ type: 'users/onLogout' });
+    },
   };
 };
 

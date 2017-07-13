@@ -9,6 +9,9 @@ gulp.task('es6', () => gulp.src('src/**/*.js')
     .pipe(sourcemaps.write('.'))
     .pipe(gulp.dest('dist')));
 
+gulp.task('styles', () => gulp.src('public/*')
+    .pipe(gulp.dest('dist/public')));
+
 gulp.task('default', () => {
   gulp.watch('src/**/*.js', ['es6']);
 });
@@ -21,7 +24,7 @@ gulp.task('start', () => {
   });
 });
 
-gulp.task('watch', ['es6'], () => {
+gulp.task('watch', ['es6', 'styles'], () => {
   return nodemon({
     script: 'bin/www',
     watch: 'src',

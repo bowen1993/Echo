@@ -73,8 +73,8 @@ async function createNewUser(phoneNum, email, username = null) {
   // await console.log('1234', newUser, isUserExists);
   return new Promise((resolve) => {
     let result = null;
-    if ( newUser ){
-      result = newUser.$extract({recursive:true});
+    if (newUser) {
+      result = newUser.$extract({ recursive: true });
     }
     resolve(result);
   });
@@ -93,9 +93,9 @@ const findUserByPhone = async (phoneNum) => {
   const session = await model.getSession();
   const userDao = session.getDao(User);
   const user = await userDao.findOne({
-    phoneNum:phoneNum,
+    phoneNum,
   });
-  return new Promise( resolve => {
+  return new Promise((resolve) => {
     resolve(user);
   });
 };
