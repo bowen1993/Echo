@@ -7,7 +7,13 @@ const FormItem = Form.Item;
 const CreateFrom = Form.create({})(
   (props) => {
     const { getFieldDecorator } = props.form;
-    const checkContent = () => {};
+    const checkContent = (rule, value, callback) => {
+      if (value) {
+        callback();
+        return;
+      }
+      callback('nothing！！！');
+    };
     return (
       <Form layout='vertical'>
         <FormItem label='Title'>

@@ -13,6 +13,7 @@ class MyEditor extends Component {
     };
     this.onEditorStateChange = this.onEditorStateChange.bind(this);
   }
+
   componentWillReceiveProps(nextProps) {
     if ('content' in nextProps) {
       const content = nextProps.content;
@@ -25,18 +26,20 @@ class MyEditor extends Component {
       editorState,
     });
   }
+
   onContentStateChange = (editorContent) => {
     this.setState({
       editorContent,
     });
+    this.triggerChange(JSON.stringify(editorContent));
+  }
+
+  triggerChange = (changedValue) => {
+    // Should provide an event to pass value to Form.
     const onChange = this.props.onChange;
     if (onChange) {
-      onChange(Object.assign({}, this.state, editorContent));
+      onChange(changedValue);
     }
-    console.log(JSON.stringify(editorContent));
-  }
-  onGetContent() {
-    return this.state.editorContent;
   }
   render() {
     const { editorState } = this.state;
