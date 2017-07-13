@@ -1,24 +1,12 @@
-import React from 'react';
 import { connect } from 'dva';
-import styles from './Users.css';
-import MainLayout from '../components/MainLayout/MainLayout';
-import PrueUser from '../components/Users/Users';
+import PureUser from 'Users/Users';
+import PureProfile from 'Users/Profile';
 
-function Users({ location, ...otherProps }) {
-  return (
-    <MainLayout location={location}>
-      <div className={styles.normal}>
-        <PrueUser {...otherProps} />
-      </div>
-    </MainLayout>
-  );
-}
-
-function mapStateToProps({ users }) {
+const mapStateToProps = ({ users }) => {
   return {
     user: users.user,
   };
-}
+};
 
 const mapDispatchToProps = (dispatch) => {
   return {
@@ -26,10 +14,15 @@ const mapDispatchToProps = (dispatch) => {
       dispatch({ type: 'users/onGetUser' });
     },
     checkLogin: (params) => {
-      console.log(params);
       dispatch({ type: 'users/checkLogin', payload: { params } });
     },
   };
 };
 
-export default connect(mapStateToProps, mapDispatchToProps)(Users);
+const User = connect(mapStateToProps, mapDispatchToProps)(PureUser);
+const UserProfile = connect(mapStateToProps, mapDispatchToProps)(PureProfile);
+
+export {
+  User,
+  UserProfile,
+};

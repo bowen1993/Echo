@@ -60,3 +60,6 @@ typings/
 # Mac Finder file
 .DS_Store
 */.DS_Store
+
+/Echo_backend/dist/*
+dist/*

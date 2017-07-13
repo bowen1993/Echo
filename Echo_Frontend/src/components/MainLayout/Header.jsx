@@ -1,34 +1,45 @@
 import React from 'react';
-import { Menu, Icon } from 'antd';
-import { Link } from 'dva/router';
-import UserDown from 'users/UserDown';
+import { Button, Input } from 'antd';
+import AccountKit from 'react-facebook-account-kit';
+import UserDown from 'Users/UserDown';
+import _ from 'lodash';
+import { InputSearch } from 'Common';
 import style from './Header.less';
 
-const Header = ({ location }) => {
-  return (
-    <div className={`${style.header}`}>
-      <Menu
-        selectedKeys={[location.pathname]}
-        mode='horizontal'
-        theme='dark'
-      >
-        <Menu.Item key='/users'>
-          <Link to='/users'><Icon type='bars' />Users</Link>
-        </Menu.Item>
-        <Menu.Item key='/'>
-          <Link to='/'><Icon type='home' />Home</Link>
-        </Menu.Item>
-        <Menu.Item key='/404'>
-          <Link to='/page-you-dont-know'><Icon type='frown-circle' />404</Link>
-        </Menu.Item>
-        <Menu.Item key='/antd'>
-          <a href='https://github.com/dvajs/dva' target='_blank'>dva</a>
-        </Menu.Item>
-      </Menu>
-      {style.userInfo}
-      <UserDown className={`${style.userInfo}`} />
-    </div>
-  );
-};
+class Header extends React.Component {
+  componentDidMount() {
+    this.props.onGetCsrf();
+  }
+  showQuest() {
+    this.editor.showModal();
+  }
+  render() {
+    const { loginUser, CSRF, checkLogin, onLogout } = this.props;
+    return (
+      <div className={`${style.header}`}>
+        <div className={`${style.image}`} onClick={() => this.props.check()}>
+          <img src='../../assets/yay.jpg' alt=''/>
+        </div>
+        <InputSearch/>
+        <div className={`${style.userInfo}`}>
+          {
+            !_.isEmpty(loginUser) ? <UserDown logout={onLogout}/> :
+            CSRF &&
+            <AccountKit
+              appId='154086658467747' // Update this!
+              version='v1.1' // Version must be in form v{major}.{minor}
+              onResponse={resp => checkLogin(resp)}
+              csrf={CSRF} // Required for security
+              language='zh_CN'
+            >
+              {p => <Button {...p}>Login</Button>}
+            </AccountKit>
+          }
+        </div>
+      </div>
+    );
+  }
+
+}
 
 export default Header;

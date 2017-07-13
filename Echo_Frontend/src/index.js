@@ -1,19 +1,44 @@
 import dva from 'dva';
+import { message } from 'antd';
+import createLoading from 'dva-loading';
+import { browserHistory } from 'dva/router';
+import { getCurrentUser } from 'services/users';
+import userModel from 'models/users';
+import RouterConfig from './router';
+
 import './index.css';
 import './index.html';
-// 1. Initialize
-const app = dva();
 
-app.model(require('./models/users'));
+(async () => {
+  const loginUser = await getCurrentUser();
+  const initialState = {
+    users: {
+      ...userModel.state,
+      loginUser,
+    },
+  };
+  // 1. Initialize
+  const app = dva({
+    history: browserHistory,
+    initialState,
+    onError: (e) => {
+      message.error(e.message);
+      console.error(e.stack);
+    },
+  });
 
-// 2. Plugins
-// app.use({});
+  // 2. Plugins
+  // app.use({});
+  app.use(
+    createLoading({ namespace: 'isFetching', effects: true }),
+  );
+  // 3. Model
+  // app.model(require('./models/example'));
+  app.model(userModel);
 
-// 3. Model
-// app.model(require('./models/example'));
+  // 4. Router
+  app.router(RouterConfig);
 
-// 4. Router
-app.router(require('./router'));
-
-// 5. Start
-app.start('#root');
+  // 5. Start
+  app.start('#root');
+})();
