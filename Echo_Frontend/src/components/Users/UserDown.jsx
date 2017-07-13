@@ -12,7 +12,9 @@ class UserDown extends Component {
         <MenuItem>
           <Link to='/users/profile'> 个人设置</Link>
         </MenuItem>
-        <MenuItem>登出</MenuItem>
+        <MenuItem>
+          <span onClick={() => this.props.logout()}>登出</span>
+        </MenuItem>
       </Menu>
     );
     return (

@@ -1,4 +1,4 @@
-import um from 'unique-model'
+import um from 'unique-model';
 
 const MongoSession = um.backend.mongo.Session;
 const model = um.model;
@@ -13,50 +13,52 @@ const UObjectArray = types.UObjectArray;
 const UDateTime = types.UDateTime;
 const UMixed = types.UMixed;
 
-//database config
+// database config
 const databaseConfig = {
-    backend: MongoSession,
-    uri: 'mongodb://localhost/echo'
-}
+  backend: MongoSession,
+  uri: 'mongodb://localhost/echo',
+};
 
-async function getSession(){
-    const session = await um.createSession(databaseConfig);
-    return session;
+async function getSession() {
+  const session = await um.createSession(databaseConfig);
+  return session;
 }
-//define models
+// define models
 const Tag = model.createModel('Tag', {
-    name: UString()
+  name: UString(),
 });
 
 const Rate = model.createModel('Rate', {
-    score: UDouble(),
-    base: UDouble(),
-    createTime: UDateTime()
-})
+  score: UDouble(),
+  base: UDouble(),
+  createTime: UDateTime(),
+});
 
 const User = model.createModel('User', {
-    username: UString(),
-    phoneNum: UString(),
-    email: UString(),
-    createDate: UDateTime(),
-    modifyDate: UDateTime(),
-    description: UString(),
-    tags: UObjectArray({
-        type:Tag
-    }),
-    rate: UObject({
-        type:Rate
-    })
+  username: UString(),
+  phoneNum: UString(),
+  email: UString(),
+  avatar: UString(),
+  createDate: UDateTime(),
+  modifyDate: UDateTime(),
+  description: UString(),
+  tags: UObjectArray({
+    type: Tag,
+  }),
+  rate: UObject({
+    type: Rate,
+  }),
 });
 
 const Category = model.createModel('Category', {
-    name: UString(),
-    tags: UObjectArray({
-        type:Tag
-    })
+  name: UString(),
+  tags: UObjectArray({
+    type: Tag,
+  }),
 });
 
 const Comment = model.createModel('Comment', {
+<<<<<<< HEAD
     content: UString(),
     author: UObject({
         type: User
@@ -94,11 +96,42 @@ const Question = model.createModel('Question', {
     answers: UObjectArray({
         type: Answer
     })
+=======
+  content: UString(),
+  author: UObject({
+    type: User,
+  }),
+  createTime: UDateTime(),
+
+});
+
+const Answer = model.createModel('Answer', {
+  content: UString(),
+  author: UObject({
+    type: User,
+  }),
+  createTime: UDateTime(),
+  lastModifyTime: UDateTime(),
+  rate: UObject({
+    type: Rate,
+  }),
+});
+
+const Question = model.createModel('Question', {
+  content: UString(),
+  author: UObject({
+    type: User,
+  }),
+  createTime: UDateTime(),
+  rate: UObject({
+    type: Rate,
+  }),
+>>>>>>> 1e8cede6705e7d43ebdca29c338aecc79568f95d
 });
 
 
-
 module.exports = {
+<<<<<<< HEAD
     User,
     Tag,
     Rate,
@@ -108,3 +141,8 @@ module.exports = {
     Answer,
     getSession
 }
+=======
+  User,
+  getSession,
+};
+>>>>>>> 1e8cede6705e7d43ebdca29c338aecc79568f95d
