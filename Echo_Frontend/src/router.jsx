@@ -5,9 +5,9 @@ import { UserProfile } from 'routes/Users';
 
 const RouterConfig = ({ history }) => (
   <Router history={history}>
-    <Route path="/" component={Layout}>
-      <Route path="/users">
-        <Route path="profile" component={UserProfile} />
+    <Route path='/' component={Layout}>
+      <Route path='/users'>
+        <Route path='profile' component={UserProfile} />
       </Route>
     </Route>
   </Router>

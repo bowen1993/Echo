@@ -42,7 +42,7 @@ const put = async (url, params) => {
   return data;
 };
 const post = async (url, params) => {
-  const response = await fetch(url, { method: 'POST', headers: { 'Content-type': 'application/json', mode: 'cors', credentials: 'include' }, body: JSON.stringify(params) });
+  const response = await fetch(url, { method: 'POST', headers: { 'Content-type': 'application/json', credentials: 'same-origin' }, body: JSON.stringify(params) });
   checkStatus(response);
   const data = await response.json();
   return data;

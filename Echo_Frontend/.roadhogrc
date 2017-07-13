@@ -6,6 +6,7 @@
     ["module-resolver", {
       "root": ["./src"],
       "alias": {
+        "assets": "./src/assets",
         "routes": "./src/routes",
         "Common": "./src/components/Common",
         "Users": "./src/components/Users",

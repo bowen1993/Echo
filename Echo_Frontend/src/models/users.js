@@ -39,12 +39,20 @@ export default {
       yield call(UserService.logout);
       yield put({ type: 'querySuccess', payload: { loginUser: null } });
     },
+    * testLogin({ payload }, { call, put }) {
+      console.log('dsafdsa');
+      const loginUser = yield call(UserService.testLogin);
+      yield put({
+        type: 'querySuccess',
+        payload: { loginUser },
+      });
+    },
   },
   subscriptions: {
     setup({ history, dispatch }) {
       return history.listen(({ pathname }) => {
         if (pathname === '/') {
-          // dispatch({ type: 'onGetCurrentUser' });
+          dispatch({ type: 'onGetCurrentUser' });
         }
       });
     },

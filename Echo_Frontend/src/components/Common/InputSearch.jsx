@@ -9,7 +9,7 @@ class InputSearch extends Component {
   }
   render() {
     return (
-      <div>
+      <div className={this.props.className || ''}>
         <Input className={`${style.inputSearch}`}/>
         <Button onClick={() => this.showQuest()}>Quest</Button>
         <EditorCreation ref={ref => this.editor = ref} />

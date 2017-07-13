@@ -70,7 +70,6 @@ router.post('/login_success', (req, res) => {
         userAction.createNewUser(view.phone_num, view.email_addr).then((currentUser) => {
           // if new user created, isSuccess would be true, else false (user exists)
           req.session.user = currentUser;
-          res.set({ 'Access-Control-Allow-Credentials': true });
           res.send(currentUser);
         });
 
@@ -80,19 +79,18 @@ router.post('/login_success', (req, res) => {
     });
   } else {
     // login failed
-    response.writeHead(400, { 'Content-Type': 'text/html' });
-    response.end('Something went wrong. :( ');
+    res.writeHead(400, { 'Content-Type': 'text/html' });
+    res.end('Something went wrong. :( ');
   }
 });
 
 router.get('/logout', (req, res) => {
   req.session.user = {};
   res.writeHead(200, { 'Content-Type': 'text/html' });
+  return res.send();
 });
 
 router.get('/currentUser', (req, res) => {
-  console.log(req.session);
-  req.session.test = 'dsf';
   return res.send(req.session.user || {});
 });
 

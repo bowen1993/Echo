@@ -7,19 +7,17 @@ async function isPhoneExists(phoneNum, userDao) {
   const user = await userDao.findOne({
     phoneNum,
   });
-  const isUserExists = !!user;
 
-  return isUserExists;
+  return !!user;
 }
 
 async function isUserExists(userId, userDao) {
   const user = await userDao.findOne({
     id: userId,
   });
-  const isUserExists = !!user;
 
   return new Promise((resolve) => {
-    resolve(isUserExists);
+    resolve(!!user);
   });
 }
 

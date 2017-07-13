@@ -17,7 +17,9 @@
     "react": "^15.6.1",
     "react-dom": "^15.6.1",
     "react-draft-wysiwyg": "^1.10.0",
-    "react-facebook-account-kit": "^0.1.0"
+    "react-facebook-account-kit": "^0.1.0",
+    "superagent": "^3.5.2",
+    "superagent-use": "^0.1.0"
   },
   "devDependencies": {
     "babel-eslint": "^7.1.1",

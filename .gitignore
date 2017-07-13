@@ -61,4 +61,5 @@ typings/
 .DS_Store
 */.DS_Store
 
-*/dist
+/Echo_backend/dist/*
+dist/*

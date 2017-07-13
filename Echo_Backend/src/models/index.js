@@ -38,6 +38,7 @@ const User = model.createModel('User', {
   username: UString(),
   phoneNum: UString(),
   email: UString(),
+  avatar: UString(),
   createDate: UDateTime(),
   modifyDate: UDateTime(),
   description: UString(),
