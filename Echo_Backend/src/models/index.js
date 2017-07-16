@@ -28,6 +28,13 @@ const Tag = model.createModel('Tag', {
     name: UString()
 });
 
+const Category = model.createModel('Category', {
+    name:UString(),
+    tags: UObjectArray({
+        type:Tag
+    })
+})
+
 const Rate = model.createModel('Rate', {
     score: UDouble(),
     base: UDouble(),
@@ -84,6 +91,7 @@ const Answer = model.createModel('Answer', {
 
 const Question = model.createModel('Question', {
     content: UString(),
+    detail: UString(),
     author: UObject({
         type: User
     }),
@@ -93,6 +101,9 @@ const Question = model.createModel('Question', {
     }),
     answers: UObjectArray({
         type: Answer
+    }),
+    tags:UObjectArray({
+        type:Tag
     })
 });
 
