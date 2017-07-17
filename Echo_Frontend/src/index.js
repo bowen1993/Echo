@@ -19,7 +19,6 @@ import './index.html';
   };
   // 1. Initialize
   const app = dva({
-    history: browserHistory,
     initialState,
     onError: (e) => {
       message.error(e.message);
