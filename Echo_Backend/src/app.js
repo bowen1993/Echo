@@ -76,15 +76,6 @@ if (app.get('env') === 'development') {
 
 // production error handler
 // no stacktraces leaked to user
-<<<<<<< HEAD
-// app.use((err, req, res, next) => {
-//   res.status(err.status || 500);
-//   res.send('error', {
-//     message: err.message,
-//     error: {},
-//   });
-// });
-=======
 app.use((err, req, res, next) => {
   res.status(err.status || 500);
   res.send('error', {
@@ -93,6 +84,5 @@ app.use((err, req, res, next) => {
   });
 });
 
->>>>>>> e8fdb22b26b038f1d8c7722b5690d48197b90c83
 
 module.exports = app;

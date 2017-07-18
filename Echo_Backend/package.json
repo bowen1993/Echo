@@ -23,11 +23,7 @@
     "js-base64": "^2.1.9",
     "moniker": "^0.1.2",
     "morgan": "~1.6.1",
-<<<<<<< HEAD
-    "node-datetime": "^1.0.1",
-=======
     "nodemon": "^1.11.0",
->>>>>>> e8fdb22b26b038f1d8c7722b5690d48197b90c83
     "querystring": "^0.2.0",
     "request": "^2.81.0",
     "requestify": "^0.2.5",

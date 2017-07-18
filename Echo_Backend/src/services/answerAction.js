@@ -8,7 +8,7 @@ const Answer = model.Answer;
 async function addAnswer2Question(content, questionId, userId){
     const session = await model.getSession();
     const answerDao = session.getDao(Answer);
-
+    const questionDao = session.getDao(Question);
     // get user and question object
     let userObj = await userAction.getUserObjById(userId);
     let questionObj = await questionAction.getQuestionObjectbyId(questionId);
@@ -27,12 +27,14 @@ async function addAnswer2Question(content, questionId, userId){
         await answerDao.create(newAnswer);
 
         //add answer to question
-        questionDao.update({
+        await questionDao.update({
             id: questionId
         },{
-            $push: {
-                answers: newAnswer
+            $push:{
+                answers: newAnswer.id
             }
+        }, {
+            multi: true
         });
 
         isSuccessful = true;
@@ -47,7 +49,7 @@ async function getAnswerObjectById(answerId){
     const session = await model.getSession();
     const answerDao = session.getDao();
 
-    let answerObject = answerDao.findOne({
+    let answerObject = await answerDao.findOne({
         id: answerId
     });
 

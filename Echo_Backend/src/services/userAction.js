@@ -84,6 +84,8 @@ async function updateUserInfo(userId, updatedInfo, userDao) {
     id: userId,
   }, {
     $set: updatedInfo,
+  },{
+      multi:true
   });
 }
 
@@ -119,14 +121,8 @@ async function getUserObjById(userId){
 
 
 module.exports = {
-<<<<<<< HEAD
     createNewUser,
     updateUsername,
-    getUserObjById
-}
-=======
-  createNewUser,
-  updateUsername,
+    getUserObjById,
   findUserByPhone,
 };
->>>>>>> e8fdb22b26b038f1d8c7722b5690d48197b90c83

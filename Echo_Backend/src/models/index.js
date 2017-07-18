@@ -42,64 +42,6 @@ const Rate = model.createModel('Rate', {
 });
 
 const User = model.createModel('User', {
-<<<<<<< HEAD
-    username: UString(),
-    phoneNum: UString(),
-    email: UString(),
-    createDate: UDateTime(),
-    modifyDate: UDateTime(),
-    description: UString(),
-    tags: UObjectArray({
-        type:'Tag'
-    }),
-    rate: UObject({
-        type:'Rate'
-    })
-});
-
-const Comment = model.createModel('Comment', {
-    content: UString(),
-    author: UObject({
-        type: 'User'
-    }),
-    createTime:UDateTime(),
-    comments: UObjectArray({
-        type:'Comment'
-    })
-})
-
-const Answer = model.createModel('Answer', {
-    content: UString(),
-    author: UObject({
-        type: User
-    }),
-    createTime: UDateTime(),
-    lastModifyTime: UDateTime(),
-    rate: UObject({
-        type: 'Rate'
-    }),
-    comments: UObjectArray({
-        type: Comment
-    })
-});
-
-const Question = model.createModel('Question', {
-    content: UString(),
-    detail: UString(),
-    author: UObject({
-        type: 'User'
-    }),
-    createTime: UDateTime(),
-    rate: UObject({
-        type: 'Rate'
-    }),
-    answers: UObjectArray({
-        type: 'Answer'
-    }),
-    tags:UObjectArray({
-        type:'Tag'
-    })
-=======
   username: UString(),
   phoneNum: UString(),
   email: UString(),
@@ -112,13 +54,6 @@ const Question = model.createModel('Question', {
   }),
   rate: UObject({
     type: 'Rate',
-  }),
-});
-
-const Category = model.createModel('Category', {
-  name: UString(),
-  tags: UObjectArray({
-    type: Tag,
   }),
 });
 
@@ -144,20 +79,26 @@ const Answer = model.createModel('Answer', {
 });
 
 const Question = model.createModel('Question', {
+  title: UString(),
   content: UString(),
   author: UObject({
     type: 'User',
   }),
   createTime: UDateTime(),
+  lastModifyTime: UDateTime(),
+  answers: UObjectArray({
+    type: 'Answer'
+  }),
+  tags:UObjectArray({
+    type:'Tag'
+  }),
   rate: UObject({
     type: 'Rate',
-  }),
->>>>>>> e8fdb22b26b038f1d8c7722b5690d48197b90c83
+  })
 });
 
 
 module.exports = {
-<<<<<<< HEAD
     User,
     Tag,
     Rate,
@@ -167,9 +108,3 @@ module.exports = {
     Answer,
     getSession
 }
-=======
-  User,
-  getSession,
-  Question,
-};
->>>>>>> e8fdb22b26b038f1d8c7722b5690d48197b90c83
