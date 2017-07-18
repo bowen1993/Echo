@@ -4,23 +4,25 @@ import userAction from './userAction';
 const Question = model.Question;
 const Answer = model.Answer;
 
-async function createQuestion(content, userId, detail=None){
+async function createQuestion(content, userId, detail=null){
     // get db session & DAO
     const session = await model.getSession();
     const questionDao = session.getDao(Question);
-
-    let userObj = await userAction.getUserObjById(userId);
-
-    let isSuccessful = false;
-
+    const userObj = await userAction.getUserObjById(userId);
+    var isSuccessful = false;
     if ( userObj ){
+        console.log('create question', content, userObj.id)
         let newQuestion = new Question({
             content: content,
-            detail:detail,
-            author: userObj,
+            author: userObj.id,
             createTime: Date.now()
         });
+        if ( detail ){
+            newQuestion.detail = detail;
+        }
+        console.log('save')
         await questionDao.create(newQuestion);
+        isSuccessful = true;
     }
 
     return new Promise( resolve => {
@@ -29,7 +31,7 @@ async function createQuestion(content, userId, detail=None){
 }
 
 async function getQuestionObjectbyId(questionId){
-    const session = model.getSession();
+    const session = await model.getSession();
     const questionDao = session.getDao(Question);
 
     let questionObject = questionDao.findOne({

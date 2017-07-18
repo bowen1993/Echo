@@ -56,13 +56,6 @@ const User = model.createModel('User', {
     })
 });
 
-const Category = model.createModel('Category', {
-    name: UString(),
-    tags: UObjectArray({
-        type:Tag
-    })
-});
-
 const Comment = model.createModel('Comment', {
     content: UString(),
     author: UObject({
@@ -82,7 +75,7 @@ const Answer = model.createModel('Answer', {
     createTime: UDateTime(),
     lastModifyTime: UDateTime(),
     rate: UObject({
-        type:Rate
+        type: Rate
     }),
     comments: UObjectArray({
         type: Comment
