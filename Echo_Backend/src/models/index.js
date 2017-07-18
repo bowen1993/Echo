@@ -31,7 +31,7 @@ const Tag = model.createModel('Tag', {
 const Category = model.createModel('Category', {
     name:UString(),
     tags: UObjectArray({
-        type:Tag
+        type:'Tag'
     })
 })
 
@@ -49,21 +49,21 @@ const User = model.createModel('User', {
     modifyDate: UDateTime(),
     description: UString(),
     tags: UObjectArray({
-        type:Tag
+        type:'Tag'
     }),
     rate: UObject({
-        type:Rate
+        type:'Rate'
     })
 });
 
 const Comment = model.createModel('Comment', {
     content: UString(),
     author: UObject({
-        type: User
+        type: 'User'
     }),
     createTime:UDateTime(),
     comments: UObjectArray({
-        type:Comment
+        type:'Comment'
     })
 })
 
@@ -75,7 +75,7 @@ const Answer = model.createModel('Answer', {
     createTime: UDateTime(),
     lastModifyTime: UDateTime(),
     rate: UObject({
-        type: Rate
+        type: 'Rate'
     }),
     comments: UObjectArray({
         type: Comment
@@ -86,17 +86,17 @@ const Question = model.createModel('Question', {
     content: UString(),
     detail: UString(),
     author: UObject({
-        type: User
+        type: 'User'
     }),
     createTime: UDateTime(),
     rate: UObject({
-        type: Rate
+        type: 'Rate'
     }),
     answers: UObjectArray({
-        type: Answer
+        type: 'Answer'
     }),
     tags:UObjectArray({
-        type:Tag
+        type:'Tag'
     })
 });
 

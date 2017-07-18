@@ -13,10 +13,15 @@ router.get('/', (req, res, next) => {
 
 // test code
 router.get('/test', (req, res, next) => {
-  questionAction.createQuestion('this is a test question?' ,'59648f22178469048674fc57').then( result =>{
-    res.json({
-      isSuccess: result
-    })
+  // create question
+  // questionAction.createQuestion('this is a test question?' ,'596dc52e4d42a7d3a0202fc6').then( result =>{
+  //   res.json({
+  //     isSuccess: result
+  //   })
+  // })
+  // get question info
+  questionAction.getQuestionInfo('596dc82469083ad500211cae').then(info => {
+    res.json(info)
   })
 });
 module.exports = router;

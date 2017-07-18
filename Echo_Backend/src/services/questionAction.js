@@ -14,7 +14,7 @@ async function createQuestion(content, userId, detail=null){
         console.log('create question', content, userObj.id)
         let newQuestion = new Question({
             content: content,
-            author: userObj.id,
+            author: userObj,
             createTime: Date.now()
         });
         if ( detail ){
@@ -28,6 +28,13 @@ async function createQuestion(content, userId, detail=null){
     return new Promise( resolve => {
         resolve(isSuccessful);
     });
+}
+
+async function updateQuestion(questionId, newQuestionInfo){
+    const session = await model.getSession();
+    const questionDao = session.getDao(Question);
+
+
 }
 
 async function getQuestionObjectbyId(questionId){
@@ -52,7 +59,7 @@ async function getQuestionInfo(questionId){
         questionInfo = await questionObject.$extract({recursive:true});
     }
 
-    return new Promise( questionInfo => {
+    return new Promise( resolve => {
         resolve(questionInfo)
     });
 }

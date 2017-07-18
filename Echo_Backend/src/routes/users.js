@@ -16,12 +16,11 @@ const tokenExchangeBaseUrl = 'https://graph.accountkit.com/v1.1/access_token';
 
 /* GET users listing. */
 router.get('/test', (req, res) => {
-  const num = req.query.num;
-  var id = req.query.id;
   // console.log(num)
-  userAction.updateUsername(id, num).then((result) => {
+  userAction.createNewUser('1212312', 'hello', 'hello').then((result)=>{
     res.send({'res':result});
   })
+  
 });
 
 router.get('/getCsrf', (req, res) => {
