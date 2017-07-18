@@ -124,5 +124,5 @@ module.exports = {
     createNewUser,
     updateUsername,
     getUserObjById,
-  findUserByPhone,
+    findUserByPhone,
 };

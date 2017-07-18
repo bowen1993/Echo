@@ -60,11 +60,14 @@ async function updateQuestion(questionId, newQuestionInfo){
 }
 
 async function suggest(userId){
+
     const session = await model.getSession();
     const questionDao = session.getDao(Question);
+    console.log(questionDao);
+    var questionList = []
 
-    const questions = await questionDao.find();
-    var questionList = await questionDao.$extractArray(questions, {recursive:true});
+    let questions = await questionDao.find({});
+    questionList = await Question.$extractArray(questions, {recursive:true});
 
     return new Promise(resolve => {
         resolve(questionList);
@@ -102,5 +105,7 @@ async function getQuestionInfo(questionId){
 module.exports = {
     createQuestion,
     getQuestionObjectbyId,
-    getQuestionInfo
+    getQuestionInfo,
+    updateQuestion,
+    suggest
 }

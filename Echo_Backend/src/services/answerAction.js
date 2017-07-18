@@ -45,6 +45,30 @@ async function addAnswer2Question(content, questionId, userId){
     });
 }
 
+async function updateAnswer(answerId, newAnswerInfo){
+    const session = await model.getSession();
+    const answerDao = session.getDao();
+
+    var answerObj = await getAnswerObjectById(answerId);
+    var isSuccessful = false;
+
+    if( answerObj ){
+        newAnswerInfo['lastModifyTime'] = Date.now();
+        await answerDao.update({
+            id: answerId
+        },{
+            $set:newAnswerInfo
+        },{
+            multi:false
+        });
+        isSuccessful = true;
+    }
+
+    return new Promise(resolve => {
+        resolve(isSuccessful);
+    });
+}
+
 async function getAnswerObjectById(answerId){
     const session = await model.getSession();
     const answerDao = session.getDao();

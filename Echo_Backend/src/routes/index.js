@@ -25,10 +25,16 @@ router.get('/test', (req, res, next) => {
   //   res.json(info)
   // })
   // add answer
-  answerAction.addAnswer2Question('yes is it', '596dc82369083ad500211cad', '596dc52e4d42a7d3a0202fc6').then(result =>{
-    res.json({
-      result:result
-    })
-  })
+  // answerAction.addAnswer2Question('yes is it', '596ddfe41c7ea2e854a42d4c', '596dc52e4d42a7d3a0202fc6').then(result =>{
+  //   res.json({
+  //     result:result
+  //   })
+  // })
+  // suggest
+  // questionAction.suggest('userid').then(result => {
+  //   res.json({
+  //     result:result
+  //   })
+  // })
 });
 module.exports = router;
