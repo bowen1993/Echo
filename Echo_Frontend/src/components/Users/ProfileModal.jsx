@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import { Modal, Form, Input } from 'antd';
 import DynamicTags from 'Tags/DynamicTags';
+import _ from 'lodash';
 
 const FormItem = Form.Item;
 
@@ -47,7 +48,6 @@ class ProfileModal extends Component {
     this.form.validateFields((err, values) => {
       if (err) return;
       const newValues = this.transform(values);
-      console.log(newValues);
       this.props.updateUserInfo(newValues);
       this.handleCancel();
     });

@@ -99,7 +99,7 @@ router.put('/currentUser', (req, res) => {
   .then(() => {
     userAction.findUserById(req.session.user.id).then((user) => {
       req.session.user = user;
-      res.send();
+      return res.send();
     });
   });
 });

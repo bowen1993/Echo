@@ -47,8 +47,12 @@ export default {
       });
     },
     * onChangeUserInfo({ payload: { userInfo } }, { call, put }) {
-      console.log('models', userInfo);
       yield call(UserService.changeUserInfo, userInfo);
+      const loginUser = yield call(UserService.getCurrentUser);
+      yield put({
+        type: 'querySuccess',
+        payload: { loginUser },
+      });
     },
   },
   subscriptions: {

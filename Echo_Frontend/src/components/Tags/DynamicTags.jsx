@@ -51,7 +51,6 @@ class DynamicTags extends React.Component {
   triggerChange = () => {
     // Should provide an event to pass value to Form.
     const onChange = this.props.onChange;
-    console.log('nnn', onChange);
     if (onChange) {
       onChange(this.state.tags);
     }

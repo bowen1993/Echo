@@ -2,8 +2,9 @@ import { connect } from 'dva';
 import PureUser from 'Users/Users';
 import PureProfile from 'Users/Profile';
 
-const mapStateToProps = ({ users }) => {
+const mapStateToProps = ({ users, isFetching }) => {
   return {
+    isFetching: isFetching.effects['users/onChangeUserInfo'],
     user: users.user,
     loginUser: users.loginUser,
   };
