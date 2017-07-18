@@ -3,13 +3,15 @@ import { Router, Route } from 'dva/router';
 import Layout from 'routes/Layout';
 import { UserProfile } from 'routes/Users';
 
-export default function ({ history }) {
-  return (
-    <Router history={history}>
-      <Route path='/' component={Layout}>
-        <Route path='/users/profile' component={UserProfile} >
-        </Route>
+const RouterConfig = ({ history }) => (
+  <Router history={history}>
+    <Route path='/' component={Layout}>
+      <Route path='users'>
+        <Route path='profile' component={UserProfile} />
       </Route>
-    </Router>
-  );
-}
+    </Route>
+  </Router>
+);
+
+
+export default RouterConfig;

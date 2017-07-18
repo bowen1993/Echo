@@ -13,6 +13,7 @@ class UserProfile extends Component {
         <div className={`${style.baseInfo}`}>
           <Avatar size='large' className={`${style.avator}`} />
           <span>{this.props.loginUser.username}</span><CustomIcon type='pen'></CustomIcon>
+          <div className={`${style.userTag}`}></div>
         </div>
         <div>
           <Tabs defaultActiveKey='1'>

@@ -7,6 +7,7 @@ import cookieParser from 'cookie-parser';
 import bodyParser from 'body-parser';
 import routes from './routes/index';
 import users from './routes/users';
+import questions from './routes/questions';
 
 const RedisStore = require('connect-redis')(session);
 
@@ -46,7 +47,7 @@ app.use((req, res, next) => {
 
 app.use('/', routes);
 app.use('/users', users);
-
+app.use('/questions', questions);
 // app.use((req, res, next) => {
 //   res.locals.user = req.session.user;
 //   next();

@@ -94,4 +94,8 @@ router.get('/currentUser', (req, res) => {
   return res.send(req.session.user || {});
 });
 
+router.put('/userTag', (req, res) => {
+  userAction.updateUserTag(req.body);
+});
+
 module.exports = router;

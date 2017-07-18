@@ -4,6 +4,7 @@ import createLoading from 'dva-loading';
 import { browserHistory } from 'dva/router';
 import { getCurrentUser } from 'services/users';
 import userModel from 'models/users';
+import questionModel from 'models/questions';
 import RouterConfig from './router';
 
 import './index.css';
@@ -34,7 +35,7 @@ import './index.html';
   // 3. Model
   // app.model(require('./models/example'));
   app.model(userModel);
-
+  app.model(questionModel);
   // 4. Router
   app.router(RouterConfig);
 

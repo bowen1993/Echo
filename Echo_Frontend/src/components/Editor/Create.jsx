@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import { Modal, Form, Input, Button } from 'antd';
+import { connect } from 'dva';
 import Editor from './Editor';
 
 const FormItem = Form.Item;
@@ -48,7 +49,8 @@ class CreateQuestionModal extends Component {
         console.log(err);
         return;
       }
-      console.log(values);
+      console.log(this.props, values);
+      this.props.onCreateNewQuestion(values);
     });
   }
 
@@ -75,4 +77,13 @@ class CreateQuestionModal extends Component {
   }
 }
 
-export default CreateQuestionModal;
+const mapDispatchToProps = (dispatch) => {
+  return {
+    onCreateNewQuestion: (question) => {
+      console.log('routes', question);
+      dispatch({ type: 'questions/onCreate', payload: { question } });
+    },
+  };
+};
+
+export default connect(null, mapDispatchToProps, undefined, { withRef: true })(CreateQuestionModal);

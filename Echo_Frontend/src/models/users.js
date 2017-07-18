@@ -1,4 +1,3 @@
-import Cookie from 'js-cookie';
 import * as UserService from '../services/users';
 
 export default {

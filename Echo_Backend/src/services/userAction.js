@@ -98,6 +98,10 @@ const findUserByPhone = async (phoneNum) => {
   });
 };
 
+const updateUserTag = async (tags) => {
+  
+}
+
 module.exports = {
   createNewUser,
   updateUsername,

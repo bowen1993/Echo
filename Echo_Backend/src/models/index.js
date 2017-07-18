@@ -43,10 +43,10 @@ const User = model.createModel('User', {
   modifyDate: UDateTime(),
   description: UString(),
   tags: UObjectArray({
-    type: Tag,
+    type: 'Tag',
   }),
   rate: UObject({
-    type: Rate,
+    type: 'Rate',
   }),
 });
 
@@ -60,7 +60,7 @@ const Category = model.createModel('Category', {
 const Comment = model.createModel('Comment', {
   content: UString(),
   author: UObject({
-    type: User,
+    type: 'User',
   }),
   createTime: UDateTime(),
 
@@ -69,23 +69,23 @@ const Comment = model.createModel('Comment', {
 const Answer = model.createModel('Answer', {
   content: UString(),
   author: UObject({
-    type: User,
+    type: 'User',
   }),
   createTime: UDateTime(),
   lastModifyTime: UDateTime(),
   rate: UObject({
-    type: Rate,
+    type: 'Rate',
   }),
 });
 
 const Question = model.createModel('Question', {
   content: UString(),
   author: UObject({
-    type: User,
+    type: 'User',
   }),
   createTime: UDateTime(),
   rate: UObject({
-    type: Rate,
+    type: 'Rate',
   }),
 });
 
@@ -93,4 +93,5 @@ const Question = model.createModel('Question', {
 module.exports = {
   User,
   getSession,
+  Question,
 };

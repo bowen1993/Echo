@@ -1,5 +1,6 @@
 import React from 'react';
 import { Button, Input } from 'antd';
+import { Link } from 'react-router';
 import AccountKit from 'react-facebook-account-kit';
 import UserDown from 'Users/UserDown';
 import _ from 'lodash';
@@ -17,9 +18,9 @@ class Header extends React.Component {
     const { loginUser, CSRF, checkLogin, onLogout } = this.props;
     return (
       <div className={`${style.header}`}>
-        <div className={`${style.image}`} onClick={() => this.props.check()}>
+        <Link to='/' className={`${style.image}`}>
           <img src='../../assets/yay.jpg' alt=''/>
-        </div>
+        </Link>
         <InputSearch/>
         <div className={`${style.userInfo}`}>
           {
