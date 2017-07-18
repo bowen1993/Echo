@@ -46,6 +46,10 @@ export default {
         payload: { loginUser },
       });
     },
+    * onChangeUserInfo({ payload: { userInfo } }, { call, put }) {
+      console.log('models', userInfo);
+      yield call(UserService.changeUserInfo, userInfo);
+    },
   },
   subscriptions: {
     setup({ history, dispatch }) {

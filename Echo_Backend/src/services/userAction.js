@@ -78,8 +78,25 @@ async function createNewUser(phoneNum, email, username = null) {
   });
 }
 
-async function updateUserInfo(userId, updatedInfo, userDao) {
+const findUserById = async (userId) => {
+  const session = await model.getSession();
+  const userDao = session.getDao(User);
+
+  const user = await userDao.findOne({
+    id: userId,
+  });
+
+  return new Promise((resolve) => {
+    resolve(user.$extract({ recursive: true }));
+  });
+};
+
+async function updateUserInfo(userId, updatedInfo) {
+  const session = await model.getSession();
+  const userDao = session.getDao(User);
+
   updatedInfo.modifyDate = Date.now();
+  console.log(updatedInfo, userId);
   await userDao.update({
     id: userId,
   }, {
@@ -98,12 +115,11 @@ const findUserByPhone = async (phoneNum) => {
   });
 };
 
-const updateUserTag = async (tags) => {
-  
-}
 
 module.exports = {
   createNewUser,
   updateUsername,
   findUserByPhone,
+  updateUserInfo,
+  findUserById,
 };

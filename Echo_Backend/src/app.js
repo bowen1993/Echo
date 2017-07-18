@@ -5,6 +5,7 @@ import logger from 'morgan';
 import session from 'express-session';
 import cookieParser from 'cookie-parser';
 import bodyParser from 'body-parser';
+import um from 'unique-model';
 import routes from './routes/index';
 import users from './routes/users';
 import questions from './routes/questions';
@@ -15,7 +16,6 @@ const app = express();
 
 // uncomment after placing your favicon in /public
 app.use(favicon(path.join(__dirname, 'public', 'favicon.ico')));
-
 
 app.use(logger('dev'));
 app.use(bodyParser.json());
@@ -43,6 +43,18 @@ app.use((req, res, next) => {
   } else {
     next();
   }
+});
+const MongoSession = um.backend.mongo.Session;
+// database config
+const databaseConfig = {
+  backend: MongoSession,
+  uri: 'mongodb://localhost/echo',
+};
+
+app.use((req, res, next) => {
+  um.createSession(databaseConfig);
+  req.session.db = um.createSession(databaseConfig);
+  next();
 });
 
 app.use('/', routes);

@@ -94,6 +94,16 @@ router.get('/currentUser', (req, res) => {
   return res.send(req.session.user || {});
 });
 
+router.put('/currentUser', (req, res) => {
+  userAction.updateUserInfo(req.session.user.id, req.body.user)
+  .then(() => {
+    userAction.findUserById(req.session.user.id).then((user) => {
+      req.session.user = user;
+      res.send();
+    });
+  });
+});
+
 router.put('/userTag', (req, res) => {
   userAction.updateUserTag(req.body);
 });
