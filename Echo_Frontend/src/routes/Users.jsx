@@ -5,6 +5,7 @@ import PureProfile from 'Users/Profile';
 const mapStateToProps = ({ users }) => {
   return {
     user: users.user,
+    loginUser: users.loginUser,
   };
 };
 
@@ -24,5 +25,5 @@ const UserProfile = connect(mapStateToProps, mapDispatchToProps)(PureProfile);
 
 export {
   User,
-  UserProfile,
+  UserProfile
 };

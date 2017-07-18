@@ -1,87 +1,105 @@
-import model from '../models'
-import Moniker from 'moniker'
+import Moniker from 'moniker';
+import model from '../models';
 
-const User = model.User
+const User = model.User;
 
-async function isPhoneExists(phoneNum, userDao){
-    let user = await userDao.findOne({
-        phoneNum: phoneNum
-    })
-    var isUserExists = (user != null)
+async function isPhoneExists(phoneNum, userDao) {
+  const user = await userDao.findOne({
+    phoneNum,
+  });
 
-    return new Promise(resolve => {
-        resolve(isUserExists);
-    });
+  return !!user;
 }
 
-async function isUserExists(userId, userDao){
-    let user = await userDao.findOne({
-        id: userId
-    })
-    var isUserExists = (user != null)
+async function isUserExists(userId, userDao) {
+  const user = await userDao.findOne({
+    id: userId,
+  });
 
-    return new Promise(resolve => {
-        resolve(isUserExists);
-    });
+  return new Promise((resolve) => {
+    resolve(!!user);
+  });
 }
 
-async function updateUsername(userId, newUsername){
-    //get db session
-    const session = await model.getSession()
-    const userDao = session.getDao(User);
+async function updateUsername(userId, newUsername) {
+    // get db session
+  const session = await model.getSession();
+  const userDao = session.getDao(User);
 
-    let isSuccessful = await isUserExists(userId, userDao);
-    
-    if ( isSuccessful ){
-        //update user info
-        let updatedInfo = {
-            username: newUsername
-        }
-        await updateUserInfo(userId, updatedInfo, userDao);
-    }
-    
-    return new Promise(resolve => {
-        resolve(isSuccessful);
-    });
+  const isSuccessful = await isUserExists(userId, userDao);
+
+  if (isSuccessful) {
+        // update user info
+    const updatedInfo = {
+      username: newUsername,
+    };
+    await updateUserInfo(userId, updatedInfo, userDao);
+  }
+
+  return new Promise((resolve) => {
+    resolve(isSuccessful);
+  });
 }
 
-async function createNewUser(phoneNum, email, username=null){
-    //get db session
-    const session = await model.getSession()
-    const userDao = session.getDao(User);
+async function createNewUser(phoneNum, email, username = null) {
+    // get db session
+  const session = await model.getSession();
+  const userDao = session.getDao(User);
 
-    var isUserExists = await isPhoneExists(phoneNum, userDao)
-    
-    if ( !isUserExists ){
-        if( username == null ){
+  const isUserExists = await isPhoneExists(phoneNum, userDao);
+
+  let newUser = null;
+  if (!isUserExists) {
+    if (username == null) {
             // generate random username
-            username = Moniker.choose();
-        }
-
-        //create new user
-        let newUser = new User({
-            username:username,
-            phoneNum:phoneNum,
-            email:email,
-            createDate:Date.now()
-        });
-
-        //save new user
-        await userDao.create(newUser);
+      username = Moniker.choose();
     }
-    
-    return new Promise(resolve => {
-        resolve(!isUserExists);
-    })
+
+        // create new user
+    newUser = new User({
+      username,
+      phoneNum,
+      email,
+      createDate: Date.now(),
+    });
+    // save new user
+    await userDao.create(newUser);
+  } else {
+    newUser = await findUserByPhone(phoneNum);
+  }
+  // newUser = await Object.assign({}, newUser, { isUserExists });
+  // await console.log('1234', newUser, isUserExists);
+  return new Promise((resolve) => {
+    let result = null;
+    if (newUser) {
+      result = newUser.$extract({ recursive: true });
+    }
+    resolve(result);
+  });
 }
 
-async function updateUserInfo(userId, updatedInfo, userDao){
-    updatedInfo['modifyDate'] = Date.now()
-    await userDao.update({
-        id:userId
-    },{
-        $set: updatedInfo
-    });
+async function updateUserInfo(userId, updatedInfo, userDao) {
+  updatedInfo.modifyDate = Date.now();
+  await userDao.update({
+    id: userId,
+  }, {
+    $set: updatedInfo,
+  });
+}
+
+const findUserByPhone = async (phoneNum) => {
+  const session = await model.getSession();
+  const userDao = session.getDao(User);
+  const user = await userDao.findOne({
+    phoneNum,
+  });
+  return new Promise((resolve) => {
+    resolve(user);
+  });
+};
+
+const updateUserTag = async (tags) => {
+  
 }
 
 async function getUserObjById(userId){
@@ -101,7 +119,14 @@ async function getUserObjById(userId){
 
 
 module.exports = {
+<<<<<<< HEAD
     createNewUser,
     updateUsername,
     getUserObjById
 }
+=======
+  createNewUser,
+  updateUsername,
+  findUserByPhone,
+};
+>>>>>>> e8fdb22b26b038f1d8c7722b5690d48197b90c83

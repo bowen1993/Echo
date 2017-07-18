@@ -6,10 +6,12 @@
     ["module-resolver", {
       "root": ["./src"],
       "alias": {
+        "assets": "./src/assets",
         "routes": "./src/routes",
         "Common": "./src/components/Common",
         "Users": "./src/components/Users",
         "MainLayout": "./src/components/MainLayout",
+        "Editor": "./src/components/Editor",
         "utils": "./src/utils"
       }
     }]
