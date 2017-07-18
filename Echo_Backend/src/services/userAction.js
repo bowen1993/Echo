@@ -101,6 +101,8 @@ async function updateUserInfo(userId, updatedInfo) {
     id: userId,
   }, {
     $set: updatedInfo,
+  }, {
+    multi: true,
   });
 }
 
@@ -116,10 +118,26 @@ const findUserByPhone = async (phoneNum) => {
 };
 
 
+async function getUserObjById(userId) {
+    // get db session & user DAO
+  const session = await model.getSession();
+  const userDao = session.getDao(User);
+
+  const userObj = userDao.findOne({
+    id: userId,
+  });
+
+  return new Promise((resolve) => {
+    resolve(userObj);
+  });
+}
+
+
 module.exports = {
   createNewUser,
   updateUsername,
   findUserByPhone,
   updateUserInfo,
   findUserById,
+  getUserObjById,
 };
