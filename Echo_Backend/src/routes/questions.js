@@ -10,7 +10,7 @@ router.get('/suggest', (req, res) => {
 });
 
 router.post('/create', (req, res) => {
-  // const author = req.session.user;
+  const author = req.session.user;
   const question = req.body.question;
   questionAction.createQuestion(question.title, author.id, question.content).then((newQuestion) => {
     console.log('hello', newQuestion);

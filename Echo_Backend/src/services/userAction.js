@@ -85,7 +85,7 @@ const findUserById = async (userId) => {
   const user = await userDao.findOne({
     id: userId,
   });
-
+  console.log('find', user);
   return new Promise((resolve) => {
     resolve(user.$extract({ recursive: true }));
   });
@@ -104,6 +104,8 @@ async function updateUserInfo(userId, updatedInfo) {
   }, {
     multi: true,
   });
+  console.log('kkk');
+  return new Promise((resolve) => { resolve(); });
 }
 
 const findUserByPhone = async (phoneNum) => {

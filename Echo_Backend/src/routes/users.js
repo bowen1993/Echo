@@ -97,7 +97,9 @@ router.get('/currentUser', (req, res) => {
 router.put('/currentUser', (req, res) => {
   userAction.updateUserInfo(req.session.user.id, req.body.user)
   .then(() => {
+    console.log('update');
     userAction.findUserById(req.session.user.id).then((user) => {
+      console.log('session', user);
       req.session.user = user;
       return res.send();
     });
