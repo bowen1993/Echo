@@ -23,3 +23,7 @@ export const logout = async () => {
 export const testLogin = () => {
   return agent.post('/api/users/test_login');
 };
+
+export const changeUserInfo = (user) => {
+  return agent.put('/api/users/currentUser').send({ user });
+};

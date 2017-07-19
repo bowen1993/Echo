@@ -23,7 +23,6 @@ const mapDispatchToProps = (dispatch, ownProps) => {
       dispatch({ type: 'users/onLogout' });
     },
     test: () => {
-      console.log('11111');
       dispatch({ type: 'users/testLogin' });
     },
   };
