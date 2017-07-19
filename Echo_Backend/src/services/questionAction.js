@@ -4,108 +4,107 @@ import userAction from './userAction';
 const Question = model.Question;
 const Answer = model.Answer;
 
-async function createQuestion(title, userId, content=null){
+async function createQuestion(title, userId, content = null) {
     // get db session & DAO
-    const session = await model.getSession();
-    const questionDao = session.getDao(Question);
-    const userObj = await userAction.getUserObjById(userId);
-    var newQuestion = null;
-    if ( userObj ){
-        console.log('create question', content, userObj.id)
-        newQuestion = new Question({
-            title: title,
-            author: userObj,
-            createTime: Date.now()
-        });
-        if ( content ){
-            newQuestion.content = content;
-        }
-        console.log('save')
-        await questionDao.create(newQuestion);
-    }
-    let result = null;
-    if ( newQuestion ){
-        result = await newQuestion.$extract({recursive:true});
-    }
-
-    return new Promise( resolve => {
-        resolve(result);
+  const session = await model.getSession();
+  const questionDao = session.getDao(Question);
+  const userObj = await userAction.getUserObjById(userId);
+  let newQuestion = null;
+  if (userObj) {
+    console.log('create question', content, userObj.id);
+    newQuestion = new Question({
+      title,
+      author: userObj,
+      createTime: Date.now(),
     });
+    if (content) {
+      newQuestion.content = content;
+    }
+    console.log('save');
+    await questionDao.create(newQuestion);
+  }
+  let result = null;
+  if (newQuestion) {
+    result = await newQuestion.$extract({ recursive: true });
+  }
+
+  return new Promise((resolve) => {
+    resolve(result);
+  });
 }
 
-async function updateQuestion(questionId, newQuestionInfo){
-    const session = await model.getSession();
-    const questionDao = session.getDao(Question);
+async function updateQuestion(questionId, newQuestionInfo) {
+  const session = await model.getSession();
+  const questionDao = session.getDao(Question);
 
-    var quetionObject = await getQuestionObjectbyId(questionId);
+  const quetionObject = await getQuestionObjectbyId(questionId);
 
-    var isSuccessful = false;
+  let isSuccessful = false;
 
-    if( questionObject ){
-        newQuestionInfo['lastModifyTime'] = Date.now()
-        await questionDao.update({
-            id:questionId
-        },{
-            $set:newQuestionInfo
-        },{
-            multi: false
-        });
-        
-        isSuccessful = true;
-    }
-
-    return new Promise( resolve => {
-        resolve(isSuccessful);
+  if (questionObject) {
+    newQuestionInfo.lastModifyTime = Date.now();
+    await questionDao.update({
+      id: questionId,
+    }, {
+      $set: newQuestionInfo,
+    }, {
+      multi: false,
     });
+
+    isSuccessful = true;
+  }
+
+  return new Promise((resolve) => {
+    resolve(isSuccessful);
+  });
 }
 
-async function suggest(userId){
+async function suggest(userId) {
+  const session = await model.getSession();
+  const questionDao = session.getDao(Question);
+  console.log(questionDao);
+  let questionList = [];
 
-    const session = await model.getSession();
-    const questionDao = session.getDao(Question);
-    console.log(questionDao);
-    var questionList = []
+  const questions = await questionDao.find({});
+  questionList = await Question.$extractArray(questions, { recursive: true });
 
-    let questions = await questionDao.find({});
-    questionList = await Question.$extractArray(questions, {recursive:true});
-
-    return new Promise(resolve => {
-        resolve(questionList);
-    });
+  return new Promise((resolve) => {
+    resolve(questionList);
+  });
 }
 
-async function getQuestionObjectbyId(questionId){
-    const session = await model.getSession();
-    const questionDao = session.getDao(Question);
+async function getQuestionObjectbyId(questionId) {
+  const session = await model.getSession();
+  const questionDao = session.getDao(Question);
 
-    let questionObject = questionDao.findOne({
-        id:questionId
-    });
+  const questionObject = questionDao.findOne({
+    id: questionId,
+  });
 
-    return new Promise( resolve => {
-        resolve(questionObject);
-    });
+  return new Promise((resolve) => {
+    resolve(questionObject);
+  });
 }
 
-async function getQuestionInfo(questionId){
-    let questionObject = await getQuestionObjectbyId(questionId)
+async function getQuestionInfo(questionId) {
+  const questionObject = await getQuestionObjectbyId(questionId);
 
-    let questionInfo = null;
+  let questionInfo = null;
 
-    if ( questionObject ){
-        questionInfo = await questionObject.$extract({recursive:true});
-    }
+  if (questionObject) {
+    questionInfo = await questionObject.$extract({ recursive: true });
+  }
 
-    return new Promise( resolve => {
-        resolve(questionInfo)
-    });
+  return new Promise((resolve) => {
+    resolve(questionInfo);
+  });
 }
 
 
 module.exports = {
-    createQuestion,
-    getQuestionObjectbyId,
-    getQuestionInfo,
-    updateQuestion,
-    suggest
-}
+  createQuestion,
+  getQuestionObjectbyId,
+  getQuestionInfo,
+  updateQuestion,
+  suggest,
+};

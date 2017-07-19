@@ -19,7 +19,6 @@ const mapDispatchToProps = (dispatch) => {
       dispatch({ type: 'users/checkLogin', payload: { params } });
     },
     updateUserInfo: (userInfo) => {
-      console.log('routes', userInfo);
       dispatch({ type: 'users/onChangeUserInfo', payload: { userInfo } });
     },
   };

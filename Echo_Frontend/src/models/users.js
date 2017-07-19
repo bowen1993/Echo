@@ -39,7 +39,6 @@ export default {
       yield put({ type: 'querySuccess', payload: { loginUser: null } });
     },
     * testLogin({ payload }, { call, put }) {
-      console.log('dsafdsa');
       const loginUser = yield call(UserService.testLogin);
       yield put({
         type: 'querySuccess',

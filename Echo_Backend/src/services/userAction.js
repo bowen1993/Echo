@@ -67,8 +67,7 @@ async function createNewUser(phoneNum, email, username = null) {
   } else {
     newUser = await findUserByPhone(phoneNum);
   }
-  // newUser = await Object.assign({}, newUser, { isUserExists });
-  // await console.log('1234', newUser, isUserExists);
+
   return new Promise((resolve) => {
     let result = null;
     if (newUser) {
@@ -85,7 +84,7 @@ const findUserById = async (userId) => {
   const user = await userDao.findOne({
     id: userId,
   });
-  console.log('find', user);
+
   return new Promise((resolve) => {
     resolve(user.$extract({ recursive: true }));
   });
@@ -96,7 +95,7 @@ async function updateUserInfo(userId, updatedInfo) {
   const userDao = session.getDao(User);
 
   updatedInfo.modifyDate = Date.now();
-  console.log(updatedInfo, userId);
+
   await userDao.update({
     id: userId,
   }, {
@@ -104,7 +103,7 @@ async function updateUserInfo(userId, updatedInfo) {
   }, {
     multi: true,
   });
-  console.log('kkk');
+
   return new Promise((resolve) => { resolve(); });
 }
 

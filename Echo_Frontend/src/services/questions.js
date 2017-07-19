@@ -5,7 +5,6 @@ export const query = () => {
 };
 
 export const create = (question) => {
-  console.log('action', question);
   return agent.post('/api/questions/create')
     .send({ question });
 };

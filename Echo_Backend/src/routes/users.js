@@ -3,6 +3,7 @@ import Querystring from 'querystring';
 import Guid from 'guid';
 import cookie from 'cookie-parser';
 import userAction from '../services/userAction';
+import * as tagAction from '../services/tagAction';
 
 const Request = require('request').defaults({ proxy: 'http://127.0.0.1:8087' });
 
@@ -95,14 +96,18 @@ router.get('/currentUser', (req, res) => {
 });
 
 router.put('/currentUser', (req, res) => {
-  userAction.updateUserInfo(req.session.user.id, req.body.user)
-  .then(() => {
-    console.log('update');
-    userAction.findUserById(req.session.user.id).then((user) => {
-      console.log('session', user);
-      req.session.user = user;
-      return res.send();
-    });
+  const tags = req.body.user.tags;
+
+  tagAction.findCreateTags(tags).then((tagIds) => {
+    const user = req.body.user;
+    user.tags = tagIds;
+    userAction.updateUserInfo(req.session.user.id, user)
+      .then(() => {
+        userAction.findUserById(req.session.user.id).then((user) => {
+          req.session.user = user;
+          return res.send();
+        });
+      });
   });
 });
 

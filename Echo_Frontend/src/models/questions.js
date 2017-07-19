@@ -15,7 +15,6 @@ export default {
 
   effects: {
     * onCreate({ payload: { question } }, { call, put }) {
-      console.log('model', question);
       yield call(QuestionService.create, question);
     },
     * onSuggest({ payload }, { call, put }) {

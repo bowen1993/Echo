@@ -9,7 +9,6 @@ const ProfileFrom = Form.create({})(
   (props) => {
     const { getFieldDecorator } = props.form;
     const checkTags = (rule, value, callback) => {
-      console.log(value);
       callback();
     };
     return (

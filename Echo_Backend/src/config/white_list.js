@@ -1,3 +1,3 @@
 module.exports = [
-  '/users/login'
+  '/users/login',
 ];
