@@ -1,3 +1,4 @@
+import _ from 'lodash';
 import model from '../models';
 import userAction from './userAction';
 
@@ -65,7 +66,11 @@ async function suggest(userId) {
 
   const questions = await questionDao.find({});
   questionList = await Question.$extractArray(questions, { recursive: true });
-
+  questionList = _.map(questionList, (it) => {
+    it.content = JSON.parse(it.content);
+    return it;
+  });
+  console.log(questionList);
   return new Promise((resolve) => {
     resolve(questionList);
   });

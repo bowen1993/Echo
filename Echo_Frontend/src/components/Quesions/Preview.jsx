@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import { CustomIcon as Icon } from 'Common';
 import { Button } from 'antd';
+import Answer from 'Editor/Answer';
 import { transContentToStr } from 'utils';
 import style from './Preview.less';
 
@@ -25,24 +26,36 @@ class PreviewQ extends Component {
   }
   render() {
     const { title, content } = this.props.suggestion;
+    console.log(typeof content);
     return (
-      <article className={`${style.content}`}>
-        <h1>{title}</h1>
-        <article>
-          {transContentToStr(JSON.parse(content))}
+      <div>
+        <article className={`${style.content}`}>
+          <h1>{title}</h1>
+          <article>
+            {transContentToStr(content)}
+          </article>
+          <footer className={`${style.footer}`}>
+            <Button className='' onClick={() => this.answer.getWrappedInstance().show()} type='primary'>My Answer</Button>
+            <ButtonGroup>
+              <Button onClick={() => this.upVote()} type={this.state.isUp ? 'primary' : 'default'}>
+                <Icon style={{ fontSize: '12px' }} type='Up'/>Upvote
+              </Button>
+              <Button onClick={() => this.downVote()} type={this.state.isDown ? 'danger' : 'default'}>downvote</Button>
+            </ButtonGroup>
+          </footer>
         </article>
-        <footer className={`${style.footer}`}>
-          <Button className='' onClick={} type='primary'>My Answer</Button>
-          <ButtonGroup>
-            <Button onClick={() => this.upVote()} type={this.state.isUp ? 'primary' : 'default'}>
-              <Icon style={{ fontSize: '12px' }} type='Up'/>Upvote
-            </Button>
-            <Button onClick={() => this.downVote()} type={this.state.isDown ? 'danger' : 'default'}>downvote</Button>
-          </ButtonGroup>
-        </footer>
-      </article>
+        <Answer question={this.props.suggestion} ref={ref => this.answer = ref}></Answer>
+      </div>
     );
   }
 }
+
+const mapDispatchToProps = (dispatch, ownProps) => {
+  return {
+    onGetAnswer: (answerId) => {
+      dispatch({ type: 'answers/onGetAnswer', payload: { answerId } });
+    },
+  };
+};
 
 export default PreviewQ;
