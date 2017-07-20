@@ -58,7 +58,6 @@ const Category = model.createModel('Category', {
 });
 
 const Comment = model.createModel('Comment', {
-<<<<<<< HEAD
     content: UString(),
     author: UObject({
         type: User
@@ -96,42 +95,10 @@ const Question = model.createModel('Question', {
     answers: UObjectArray({
         type: Answer
     })
-=======
-  content: UString(),
-  author: UObject({
-    type: User,
-  }),
-  createTime: UDateTime(),
-
-});
-
-const Answer = model.createModel('Answer', {
-  content: UString(),
-  author: UObject({
-    type: User,
-  }),
-  createTime: UDateTime(),
-  lastModifyTime: UDateTime(),
-  rate: UObject({
-    type: Rate,
-  }),
-});
-
-const Question = model.createModel('Question', {
-  content: UString(),
-  author: UObject({
-    type: User,
-  }),
-  createTime: UDateTime(),
-  rate: UObject({
-    type: Rate,
-  }),
->>>>>>> 1e8cede6705e7d43ebdca29c338aecc79568f95d
 });
 
 
 module.exports = {
-<<<<<<< HEAD
     User,
     Tag,
     Rate,
@@ -141,8 +108,3 @@ module.exports = {
     Answer,
     getSession
 }
-=======
-  User,
-  getSession,
-};
->>>>>>> 1e8cede6705e7d43ebdca29c338aecc79568f95d
