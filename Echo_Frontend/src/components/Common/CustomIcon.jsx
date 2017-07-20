@@ -1,8 +1,8 @@
 import React from 'react';
 
-const CustomIcon = ({ type = '', className = '', onClick }) => {
+const CustomIcon = ({ type = '', className = '', onClick, style }) => {
   return (
-    <i className={`iconfont icon-${type} ${className}`} onClick={onClick}/>
+    <i className={`iconfont icon-${type} ${className}`} style={style} onClick={onClick}/>
   );
 };
 

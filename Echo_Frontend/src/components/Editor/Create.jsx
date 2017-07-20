@@ -55,8 +55,7 @@ class CreateQuestionModal extends Component {
   }
 
   onCancel() {
-    console.log('close');
-    this.setState({ visible: false });
+    this.setState({ visible: false }, () => this.form.resetFields());
   }
 
   showModal() {
@@ -80,7 +79,6 @@ class CreateQuestionModal extends Component {
 const mapDispatchToProps = (dispatch) => {
   return {
     onCreateNewQuestion: (question) => {
-      console.log('routes', question);
       dispatch({ type: 'questions/onCreate', payload: { question } });
     },
   };

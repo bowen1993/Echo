@@ -1,5 +1,7 @@
 import React, { Component } from 'react';
 import { connect } from 'dva';
+import Preview from 'Questions/Preview';
+import _ from 'lodash';
 
 class Suggestions extends Component {
   componentDidMount() {
@@ -10,7 +12,12 @@ class Suggestions extends Component {
     return (
       <div>
         This is suggestion
-        {this.props.suggestions}
+        {JSON.stringify(this.props.suggestions)}
+        {
+          _.map(this.props.suggestions, (suggestion, i) => {
+            return <Preview key={i} suggestion={suggestion} />;
+          })
+        }
       </div>
     );
   }

@@ -11,7 +11,6 @@ async function createQuestion(title, userId, content = null) {
   const userObj = await userAction.getUserObjById(userId);
   let newQuestion = null;
   if (userObj) {
-    console.log('create question', content, userObj.id);
     newQuestion = new Question({
       title,
       author: userObj,
@@ -62,7 +61,6 @@ async function updateQuestion(questionId, newQuestionInfo) {
 async function suggest(userId) {
   const session = await model.getSession();
   const questionDao = session.getDao(Question);
-  console.log(questionDao);
   let questionList = [];
 
   const questions = await questionDao.find({});

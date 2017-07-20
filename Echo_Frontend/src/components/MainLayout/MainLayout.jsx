@@ -5,7 +5,7 @@ import Suggestion from './Suggestion';
 
 const MainLayout = ({ children, ...otherProps }) => {
   return (
-    <div className='mainlayout'>
+    <div className={`${style.mainlayout}`}>
       <Header className={`${style.header}`} {...otherProps} />
       <div className={`${style.content}`}>
         {
