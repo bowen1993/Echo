@@ -16,15 +16,17 @@ router.get('/question', (req, res) => {
         }
     }
   }
+  let objQueryStr = JSON.stringify(searchQuery);
+
   // send request to search engine
   var options = {
     url: searchConfig.searchEndpoint,
-    qs:searchQuery,
+    qs:{q:objQueryStr},
     method:'GET'
   }
   request(options).on('response', response => {
-    
   }).pipe(res);
+  
 });
 
 module.exports = router;
