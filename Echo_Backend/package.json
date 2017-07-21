@@ -24,6 +24,7 @@
     "moniker": "^0.1.2",
     "morgan": "~1.6.1",
     "nodemon": "^1.11.0",
+    "norch": "^0.8.13",
     "querystring": "^0.2.0",
     "request": "^2.81.0",
     "requestify": "^0.2.5",

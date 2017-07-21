@@ -10,6 +10,7 @@ import routes from './routes/index';
 import users from './routes/users';
 import questions from './routes/questions';
 import answers from './routes/answers';
+import search from './routes/search';
 
 const RedisStore = require('connect-redis')(session);
 
@@ -62,6 +63,7 @@ app.use('/', routes);
 app.use('/users', users);
 app.use('/questions', questions);
 app.use('/answers', answers);
+app.use('/search', search);
 // app.use((req, res, next) => {
 //   res.locals.user = req.session.user;
 //   next();
