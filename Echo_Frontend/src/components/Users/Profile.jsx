@@ -33,7 +33,7 @@ class UserProfile extends Component {
             <Tabs defaultActiveKey='1'>
               <TabPane tab='My Questions' key='1'>
                 {
-                  _.map(this.props.questions, it => <Preview suggestion={it} />)
+                  _.map(this.props.questions, (it, i) => <Preview key={i} suggestion={it} />)
                 }
               </TabPane>
               <TabPane tab='My Answers' key='2'>
