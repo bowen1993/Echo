@@ -3,7 +3,6 @@ import model from '../models';
 import userAction from './userAction';
 
 const Question = model.Question;
-const Answer = model.Answer;
 
 async function createQuestion(title, userId, content = null) {
     // get db session & DAO
@@ -20,7 +19,6 @@ async function createQuestion(title, userId, content = null) {
     if (content) {
       newQuestion.content = content;
     }
-    console.log('save');
     await questionDao.create(newQuestion);
   }
   let result = null;
@@ -59,18 +57,34 @@ async function updateQuestion(questionId, newQuestionInfo) {
   });
 }
 
+async function getAnswer(id) {
+  const answerObj = await answerDao.findOne({ id });
+  return answerObj.$extract({ recursive: true });
+}
+
+async function getQuestionList(questions) {
+  return Question.$extractArray(questions, {
+    recursive: true,
+    includes: {
+      title: true,
+      content: true,
+      answers: {
+        content: true,
+        author: true,
+        rate: true,
+      },
+    },
+  });
+}
+
 async function suggest(userId) {
   const session = await model.getSession();
   const questionDao = session.getDao(Question);
   let questionList = [];
 
   const questions = await questionDao.find({});
-  questionList = await Question.$extractArray(questions, { recursive: true });
-  questionList = _.map(questionList, (it) => {
-    it.content = JSON.parse(it.content);
-    return it;
-  });
-  console.log(questionList);
+  questionList = await getQuestionList(questions);
+
   return new Promise((resolve) => {
     resolve(questionList);
   });
@@ -80,7 +94,7 @@ async function getQuestionObjectbyId(questionId) {
   const session = await model.getSession();
   const questionDao = session.getDao(Question);
 
-  const questionObject = questionDao.findOne({
+  const questionObject = await questionDao.findOne({
     id: questionId,
   });
 
@@ -103,11 +117,32 @@ async function getQuestionInfo(questionId) {
   });
 }
 
+async function getQuestions(params) {
+  const session = await model.getSession();
+  const questionDao = session.getDao(Question);
+  const { authorId, pageSize = 5, pageNo = 1 } = params;
+
+  let questions = await questionDao.query({
+    author: authorId,
+  }).sort({
+    createTime: 1,
+  }).skip(pageSize * (pageNo - 1))
+  .limit(pageSize)
+  .execute();
+
+  questions = await getQuestionList(questions);
+
+  return new Promise((resolve) => {
+    resolve(questions);
+  });
+}
+
 
 module.exports = {
   createQuestion,
   getQuestionObjectbyId,
   getQuestionInfo,
+  getQuestions,
   updateQuestion,
   suggest,
 };

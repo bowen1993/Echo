@@ -45,11 +45,7 @@ class CreateQuestionModal extends Component {
 
   onOk() {
     this.form.validateFields((err, values) => {
-      if (err) {
-        console.log(err);
-        return;
-      }
-      console.log(this.props, values);
+      if (err) return;
       this.props.onCreateNewQuestion(values);
     });
   }

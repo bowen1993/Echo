@@ -2,6 +2,8 @@ import React, { Component } from 'react';
 import { connect } from 'dva';
 import { Avatar, Tabs, Spin } from 'antd';
 import { CustomIcon } from 'Common';
+import Preview from 'Questions/Preview';
+import _ from 'lodash';
 import ProfileModal from './ProfileModal';
 
 import style from './Profile.less';
@@ -9,9 +11,14 @@ import style from './Profile.less';
 const TabPane = Tabs.TabPane;
 
 class UserProfile extends Component {
+  componentDidMount() {
+    this.props.onGetQuestionsByAuthor(this.props.loginUser.id);
+  }
+
   showProfileModal() {
     this.modal.show();
   }
+
   render() {
     return (
       <Spin spinning={!!this.props.isFetching}>
@@ -24,9 +31,17 @@ class UserProfile extends Component {
           </div>
           <div>
             <Tabs defaultActiveKey='1'>
-              <TabPane tab='My Questions' key='1'>{JSON.stringify(this.props.loginUser)}</TabPane>
-              <TabPane tab='My Answers' key='2'>Content of Tab Pane 2</TabPane>
-              <TabPane tab='Others' key='3'>Content of Tab Pane 3</TabPane>
+              <TabPane tab='My Questions' key='1'>
+                {
+                  _.map(this.props.questions, it => <Preview suggestion={it} />)
+                }
+              </TabPane>
+              <TabPane tab='My Answers' key='2'>
+
+              </TabPane>
+              <TabPane tab='Others' key='3'>
+
+              </TabPane>
             </Tabs>
           </div>
           <ProfileModal ref={ref => this.modal = ref} user={this.props.loginUser} updateUserInfo={this.props.updateUserInfo}/>

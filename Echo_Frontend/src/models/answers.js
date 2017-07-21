@@ -5,7 +5,7 @@ export default {
   namespace: 'answers',
 
   state: {
-
+    answer: null,
   },
 
   subscriptions: {
@@ -16,6 +16,9 @@ export default {
   effects: {
     *onCreate({ payload: { questionId, answer } }, { call, put }) {  // eslint-disable-line
       yield call(AnswerService.create, questionId, answer);
+    },
+    * onGetAnswer({ payload: { answerId } }, { call, put }) {
+
     },
   },
 

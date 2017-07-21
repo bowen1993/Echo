@@ -3,6 +3,12 @@ import * as questionAction from '../services/questionAction';
 
 const router = express.Router();
 
+router.get('/', (req, res) => {
+  questionAction.getQuestions(req.query).then((questions) => {
+    return res.send(questions);
+  });
+});
+
 router.get('/suggest', (req, res) => {
   questionAction.suggest('userid').then((questions) => {
     return res.send(questions);

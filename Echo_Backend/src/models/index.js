@@ -29,11 +29,11 @@ const Tag = model.createModel('Tag', {
 });
 
 const Category = model.createModel('Category', {
-    name:UString(),
-    tags: UObjectArray({
-        type:'Tag'
-    })
-})
+  name: UString(),
+  tags: UObjectArray({
+    type: 'Tag',
+  }),
+});
 
 const Rate = model.createModel('Rate', {
   score: UDouble(),
@@ -87,24 +87,24 @@ const Question = model.createModel('Question', {
   createTime: UDateTime(),
   lastModifyTime: UDateTime(),
   answers: UObjectArray({
-    type: 'Answer'
+    type: 'Answer',
   }),
-  tags:UObjectArray({
-    type:'Tag'
+  tags: UObjectArray({
+    type: 'Tag',
   }),
   rate: UObject({
     type: 'Rate',
-  })
+  }),
 });
 
 
 module.exports = {
-    User,
-    Tag,
-    Rate,
-    Category,
-    Comment,
-    Question,
-    Answer,
-    getSession
-}
+  User,
+  Tag,
+  Rate,
+  Category,
+  Comment,
+  Question,
+  Answer,
+  getSession,
+};

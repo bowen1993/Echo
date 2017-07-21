@@ -1,6 +1,7 @@
 import _ from 'lodash';
 
 export const transContentToStr = (content) => {
-  const lines = _.map(content.blocks, (it) => { console.log(it); return it.text; });
-  return lines.join('');
+  const contentJson = (typeof content === 'string') ? JSON.parse(content) : content;
+  const lines = _.map(contentJson.blocks, it => it.text);
+  return lines.join('\n');
 };

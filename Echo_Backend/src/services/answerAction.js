@@ -6,7 +6,6 @@ const Question = model.Question;
 const Answer = model.Answer;
 
 async function addAnswer2Question(content, questionId, userId) {
-  console.log(content, questionId, userId);
   const session = await model.getSession();
   const answerDao = session.getDao(Answer);
   const questionDao = session.getDao(Question);

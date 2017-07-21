@@ -53,11 +53,16 @@ class AnswerPanel extends Component {
     this.setState({ visible: true });
   }
 
+  cancelEvent(e) {
+    e.preventDefault();
+    e.stopPropagation();
+  }
+
   render() {
     const { question } = this.props;
     if (!this.state.visible) return null;
     return (
-      <article className={`${style.answer}`}>
+      <article className={`${style.answer}`} onClick={e => this.cancelEvent(e)}>
         <h1>{question.title}</h1>
         <AnswerFrom ref={ref => this.form = ref}/>
         <Button type='primary' onClick={() => this.onOk()}>Submit</Button>
