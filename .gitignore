@@ -113,3 +113,5 @@ pip-delete-this-directory.txt
 .vscode/*
 */.vscode/*
 */.vscode
+
+Echo_Backend/algorithm/textProcessing/runs/*
