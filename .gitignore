@@ -61,7 +61,6 @@ typings/
 .DS_Store
 */.DS_Store
 
-*/dist
 
 # Byte-compiled / optimized / DLL files
 __pycache__/
@@ -115,3 +114,7 @@ pip-delete-this-directory.txt
 */.vscode
 
 Echo_Backend/algorithm/textProcessing/runs/*
+*/dist
+/Echo_backend/dist/*
+dist/*
+

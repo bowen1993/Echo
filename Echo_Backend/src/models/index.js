@@ -28,6 +28,13 @@ const Tag = model.createModel('Tag', {
   name: UString(),
 });
 
+const Category = model.createModel('Category', {
+    name:UString(),
+    tags: UObjectArray({
+        type:'Tag'
+    })
+})
+
 const Rate = model.createModel('Rate', {
   score: UDouble(),
   base: UDouble(),
@@ -43,58 +50,51 @@ const User = model.createModel('User', {
   modifyDate: UDateTime(),
   description: UString(),
   tags: UObjectArray({
-    type: Tag,
+    type: 'Tag',
   }),
   rate: UObject({
-    type: Rate,
-  }),
-});
-
-const Category = model.createModel('Category', {
-  name: UString(),
-  tags: UObjectArray({
-    type: Tag,
+    type: 'Rate',
   }),
 });
 
 const Comment = model.createModel('Comment', {
-    content: UString(),
-    author: UObject({
-        type: User
-    }),
-    createTime:UDateTime(),
-    comments: UObjectArray({
-        type:Comment
-    })
-})
+  content: UString(),
+  author: UObject({
+    type: 'User',
+  }),
+  createTime: UDateTime(),
+
+});
 
 const Answer = model.createModel('Answer', {
-    content: UString(),
-    author: UObject({
-        type: User
-    }),
-    createTime: UDateTime(),
-    lastModifyTime: UDateTime(),
-    rate: UObject({
-        type:Rate
-    }),
-    comments: UObjectArray({
-        type: Comment
-    })
+  content: UString(),
+  author: UObject({
+    type: 'User',
+  }),
+  createTime: UDateTime(),
+  lastModifyTime: UDateTime(),
+  rate: UObject({
+    type: 'Rate',
+  }),
 });
 
 const Question = model.createModel('Question', {
-    content: UString(),
-    author: UObject({
-        type: User
-    }),
-    createTime: UDateTime(),
-    rate: UObject({
-        type: Rate
-    }),
-    answers: UObjectArray({
-        type: Answer
-    })
+  title: UString(),
+  content: UString(),
+  author: UObject({
+    type: 'User',
+  }),
+  createTime: UDateTime(),
+  lastModifyTime: UDateTime(),
+  answers: UObjectArray({
+    type: 'Answer'
+  }),
+  tags:UObjectArray({
+    type:'Tag'
+  }),
+  rate: UObject({
+    type: 'Rate',
+  })
 });
 
 

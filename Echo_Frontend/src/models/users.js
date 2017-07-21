@@ -1,4 +1,3 @@
-import Cookie from 'js-cookie';
 import * as UserService from '../services/users';
 
 export default {
@@ -40,8 +39,15 @@ export default {
       yield put({ type: 'querySuccess', payload: { loginUser: null } });
     },
     * testLogin({ payload }, { call, put }) {
-      console.log('dsafdsa');
       const loginUser = yield call(UserService.testLogin);
+      yield put({
+        type: 'querySuccess',
+        payload: { loginUser },
+      });
+    },
+    * onChangeUserInfo({ payload: { userInfo } }, { call, put }) {
+      yield call(UserService.changeUserInfo, userInfo);
+      const loginUser = yield call(UserService.getCurrentUser);
       yield put({
         type: 'querySuccess',
         payload: { loginUser },

@@ -2,9 +2,11 @@ import { connect } from 'dva';
 import PureUser from 'Users/Users';
 import PureProfile from 'Users/Profile';
 
-const mapStateToProps = ({ users }) => {
+const mapStateToProps = ({ users, isFetching }) => {
   return {
+    isFetching: isFetching.effects['users/onChangeUserInfo'],
     user: users.user,
+    loginUser: users.loginUser,
   };
 };
 
@@ -16,6 +18,9 @@ const mapDispatchToProps = (dispatch) => {
     checkLogin: (params) => {
       dispatch({ type: 'users/checkLogin', payload: { params } });
     },
+    updateUserInfo: (userInfo) => {
+      dispatch({ type: 'users/onChangeUserInfo', payload: { userInfo } });
+    },
   };
 };
 
@@ -24,5 +29,5 @@ const UserProfile = connect(mapStateToProps, mapDispatchToProps)(PureProfile);
 
 export {
   User,
-  UserProfile,
+  UserProfile
 };

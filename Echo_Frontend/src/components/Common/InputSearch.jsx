@@ -5,7 +5,7 @@ import style from './InputSearch.less';
 
 class InputSearch extends Component {
   showQuest() {
-    this.editor.showModal();
+    this.editor.getWrappedInstance().showModal();
   }
   render() {
     return (
