@@ -9,6 +9,10 @@ router.get('/', (req, res) => {
   });
 });
 
+router.get('/:id', (req, res) => {
+  questionAction.getQuestionInfo(req.params.id).then(question => res.send(question));
+});
+
 router.get('/suggest', (req, res) => {
   questionAction.suggest('userid').then((questions) => {
     return res.send(questions);

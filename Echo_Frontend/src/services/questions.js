@@ -16,3 +16,7 @@ export const suggest = () => {
 export const getQuestionsByAuthor = (authorId) => {
   return agent.get('/api/questions').query({ authorId }).then(res => res.body);
 };
+
+export const getQuestionsById = (id) => {
+  return agent.get(`/api/questions/${id}`).then(res => res.body);
+};
