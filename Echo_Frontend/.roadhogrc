@@ -11,6 +11,7 @@
         "Common": "./src/components/Common",
         "Users": "./src/components/Users",
         "Tags": "./src/components/Tags",
+        "Questions": "./src/components/Quesions",
         "MainLayout": "./src/components/MainLayout",
         "Editor": "./src/components/Editor",
         "utils": "./src/utils"

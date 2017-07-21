@@ -1,5 +1,4 @@
-@value colors: "../../style/color.less";
-@value primary-color from colors;
+@import "../../style/color.less";
 
 .userInfo {
   width: 100px;
@@ -13,11 +12,12 @@
   width: 100%;
   top:0;
   left: 0;
-  background-color: primary-color;
+  background-color: @primary-color;
   height: 40px;
   display: flex;
   align-items: center;
   justify-content: space-between;
+  z-index: 9;
 }
 
 .image {

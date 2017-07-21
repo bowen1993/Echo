@@ -5,6 +5,7 @@ import { browserHistory } from 'dva/router';
 import { getCurrentUser } from 'services/users';
 import userModel from 'models/users';
 import questionModel from 'models/questions';
+import answerModel from 'models/answers';
 import RouterConfig from './router';
 
 import './index.css';
@@ -36,6 +37,7 @@ import './index.html';
   // app.model(require('./models/example'));
   app.model(userModel);
   app.model(questionModel);
+  app.model(answerModel);
   // 4. Router
   app.router(RouterConfig);
 

@@ -9,6 +9,7 @@ import um from 'unique-model';
 import routes from './routes/index';
 import users from './routes/users';
 import questions from './routes/questions';
+import answers from './routes/answers';
 
 const RedisStore = require('connect-redis')(session);
 
@@ -60,6 +61,7 @@ app.use((req, res, next) => {
 app.use('/', routes);
 app.use('/users', users);
 app.use('/questions', questions);
+app.use('/answers', answers);
 // app.use((req, res, next) => {
 //   res.locals.user = req.session.user;
 //   next();
@@ -77,11 +79,11 @@ app.use((req, res, next) => {
 // development error handler
 // will print stacktrace
 if (app.get('env') === 'development') {
-  app.use(function(err, req, res, next) {
+  app.use((err, req, res, next) => {
     res.status(err.status || 500);
     res.send('error', {
       message: err.message,
-      error: err
+      error: err,
     });
   });
 }

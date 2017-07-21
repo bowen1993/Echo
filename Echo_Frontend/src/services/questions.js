@@ -12,3 +12,7 @@ export const create = (question) => {
 export const suggest = () => {
   return agent.get('/api/questions/suggest').then(res => res.body);
 };
+
+export const getQuestionsByAuthor = (authorId) => {
+  return agent.get('/api/questions').query({ authorId }).then(res => res.body);
+};
