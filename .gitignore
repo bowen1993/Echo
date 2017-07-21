@@ -118,3 +118,9 @@ Echo_Backend/algorithm/textProcessing/runs/*
 /Echo_backend/dist/*
 dist/*
 
+*/norch-index
+norch-index/*
+Echo_Backend/norch-index/*
+Echo_Backend/norch-index
+
+
