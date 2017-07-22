@@ -7,6 +7,7 @@ export default {
   state: {
     suggestions: [],
     questions: [],
+    question: null,
   },
 
   subscriptions: {
@@ -25,6 +26,10 @@ export default {
     * getQuestionsByAuthor({ payload: { authorId } }, { call, put }) {
       const questions = yield call(QuestionService.getQuestionsByAuthor, authorId);
       yield put({ type: 'querySuccess', payload: { questions } });
+    },
+    * onGetQuestionById({ payload: { id } }, { call, put }) {
+      const question = yield call(QuestionService.getQuestionsById, id);
+      yield put({ type: 'querySuccess', payload: { question } });
     },
   },
 

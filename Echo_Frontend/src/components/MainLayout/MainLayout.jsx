@@ -1,7 +1,7 @@
 import React from 'react';
 import style from './MainLayout.less';
 import Header from './Header';
-import Suggestion from './Suggestion';
+import Default from './Default';
 
 const MainLayout = ({ children, ...otherProps }) => {
   return (
@@ -9,7 +9,7 @@ const MainLayout = ({ children, ...otherProps }) => {
       <Header className={`${style.header}`} {...otherProps} />
       <div className={`${style.content}`}>
         {
-          children || <Suggestion />
+          children || <Default />
         }
       </div>
     </div>

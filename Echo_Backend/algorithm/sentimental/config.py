@@ -1,4 +1,4 @@
-API_KEY = 'simiKHfo/wfYyamMINvCEZhjPIf1'
+API_KEY = 'sim/6NCFY/yxBX0KhPdYLikH3J31'
 
 TWITTER = {
     'APP_KEY': 'xMdXBAzs0rHI2v4G4B0G6xB1k',
