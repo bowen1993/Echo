@@ -28,7 +28,6 @@ export default {
       yield put({ type: 'querySuccess', payload: { questions } });
     },
     * onGetQuestionById({ payload: { id } }, { call, put }) {
-      console.log('model');
       const question = yield call(QuestionService.getQuestionsById, id);
       yield put({ type: 'querySuccess', payload: { question } });
     },

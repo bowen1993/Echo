@@ -12,7 +12,6 @@ class Question extends Component {
   }
   render() {
     const { question } = this.props;
-    console.log(question);
     return (
       <div className={`${style.content}`}>
         <div>
@@ -37,7 +36,6 @@ const mapStateToProps = ({ questions }, ownProps) => {
 const mapDispatchToProps = (dispatch, ownProps) => {
   return {
     onGetQuestionById: (id) => {
-      console.log('232', id);
       dispatch({ type: 'questions/onGetQuestionById', payload: { id } });
     },
   };
