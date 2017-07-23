@@ -1,0 +1,43 @@
+{
+  "entry": "src/index.js",
+  "extraBabelPlugins": [
+    "transform-runtime",
+    ["import", { "libraryName": "antd", "style": true }],
+    ["module-resolver", {
+      "root": ["./src"],
+      "alias": {
+        "assets": "./src/assets",
+        "routes": "./src/routes",
+        "Common": "./src/components/Common",
+        "Users": "./src/components/Users",
+        "Tags": "./src/components/Tags",
+        "Questions": "./src/components/Quesions",
+        "Answers": "./src/components/Answers",
+        "MainLayout": "./src/components/MainLayout",
+        "Editor": "./src/components/Editor",
+        "Sentiment": "./src/components/Sentiment",
+        "utils": "./src/utils"
+      }
+    }]
+  ],
+  "env": {
+    "development": {
+      "extraBabelPlugins": [
+        "dva-hmr"
+      ]
+    }
+  },
+  "proxy": {
+    "/api": {
+      "target": "http://127.0.0.1:3000",
+      "changeOrigin": true,
+      "pathRewrite": { "^/api" : "" }
+    },
+    "/ws/msg": {
+      "target": "http://127.0.0.1:8001",
+      "changeOrigin": true,
+      "pathRewrite": { "^/ws/ms" : "" }
+    }
+  },
+  "theme": "./src/style/theme.js"
+}
