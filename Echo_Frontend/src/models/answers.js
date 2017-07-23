@@ -26,6 +26,7 @@ export default {
     },
     * onVote({ payload: { answerId, up, down } }, { call, put }) {
       yield call(AnswerService.vote, answerId, up, down);
+      yield put({ type: 'qustions/onSuggest' });
     },
   },
 

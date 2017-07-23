@@ -37,7 +37,6 @@ const Category = model.createModel('Category', {
 
 const Rate = model.createModel('Rate', {
   score: UDouble(),
-  base: UDouble(),
   createTime: UDateTime(),
 });
 
