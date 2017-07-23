@@ -19,7 +19,7 @@ class Header extends React.Component {
     return (
       <div className={`${style.header}`}>
         <Link to='/' className={`${style.image}`}>
-          <img src='../../assets/yay.jpg' alt=''/>
+          <span className={`${style.logo}`}>ECHO</span>
         </Link>
         <InputSearch/>
         <div className={`${style.userInfo}`}>
