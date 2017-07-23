@@ -1,11 +1,22 @@
 import React, { Component } from 'react';
 import { connect } from 'dva';
+import _ from 'lodash';
+import PrueAnswer from 'Answers/PrueAnswer';
+import PrueQuestion from './PrueQuestion';
+import style from './Question.less';
 
 class Question extends Component {
   render() {
+    const { question } = this.props;
     return (
-      <div>
-
+      <div className={`${style.content}`}>
+        <div>
+          <PrueQuestion question={question}/>
+          {
+            _.map(question.answers, it => <PrueAnswer answer={it}/>)
+          }
+        </div>
+        <div></div>
       </div>
     );
   }
@@ -25,4 +36,4 @@ const mapDispatchToProps = (dispatch, ownProps) => {
   };
 };
 
-export default connect(mapStateToProps, mapDispatchToProps, mergeProps)(Question);
+export default connect(mapStateToProps, mapDispatchToProps)(Question);
