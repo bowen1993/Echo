@@ -12,6 +12,7 @@
         "Users": "./src/components/Users",
         "Tags": "./src/components/Tags",
         "Questions": "./src/components/Quesions",
+        "Answers": "./src/components/Answers",
         "MainLayout": "./src/components/MainLayout",
         "Editor": "./src/components/Editor",
         "Sentiment": "./src/components/Sentiment",

@@ -73,6 +73,8 @@ const Answer = model.createModel('Answer', {
   }),
   createTime: UDateTime(),
   lastModifyTime: UDateTime(),
+  up: UInteger(),
+  down: UInteger(),
   rate: UObject({
     type: 'Rate',
   }),

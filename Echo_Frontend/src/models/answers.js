@@ -20,6 +20,9 @@ export default {
     * onGetAnswer({ payload: { answerId } }, { call, put }) {
 
     },
+    * onVote({ payload: { answerId, up, down } }, { call, put }) {
+      yield call(AnswerService.vote, answerId, up, down);
+    },
   },
 
   reducers: {
