@@ -8,7 +8,7 @@ RUN pip install --upgrade pip
 RUN pip install pymongo numpy tensorflow Algorithmia
 RUN pip install git+https://github.com/dpallot/simple-websocket-server.git
 COPY . /root/echo
-WORKDIR /root/s4gserver
+WORKDIR /root/echo
 RUN npm install
 RUN npm install -g gulp
 RUN npm run build
