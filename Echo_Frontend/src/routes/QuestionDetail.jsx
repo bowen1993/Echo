@@ -1,4 +1,5 @@
 import { connect } from 'dva';
+import QuestionDetail from 'Questions/Question';
 
 const mapStateToProps = ({ questions }, ownProps) => {
   return {
@@ -15,4 +16,4 @@ const mapDispatchToProps = (dispatch, ownProps) => {
 };
 
 
-export default connect(mapStateToProps, mapDispatchToProps)(Question);
+export default QuestionDetail;

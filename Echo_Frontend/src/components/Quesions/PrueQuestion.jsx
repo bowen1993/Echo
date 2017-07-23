@@ -1,9 +1,9 @@
 import React from 'react';
 import { transContentToStr } from 'utils';
 
-const PrueQuestion = ({ question }) => {
+const PrueQuestion = ({ question, className }) => {
   return (
-    <article>
+    <article className={className}>
       <h2>{question.title}</h2>
       <section>{transContentToStr(question.content)}</section>
     </article>

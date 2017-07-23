@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import { CustomIcon as Icon } from 'Common';
 import { Button } from 'antd';
+import { Link } from 'react-router';
 import { connect } from 'dva';
 import Answer from 'Editor/Answer';
 import { transContentToStr } from 'utils';
@@ -34,9 +35,9 @@ class PreviewQ extends Component {
     this.setState({ isShowAnswer: false });
   }
   render() {
-    const { title, content, answers } = this.props.suggestion;
+    const { title, content, answers, id } = this.props.suggestion;
     return (
-      <div>
+      <Link to={`/questions/${id}`}>
         <article className={`${style.content}`}>
           <h1>{title}</h1>
           <article>
@@ -61,7 +62,7 @@ class PreviewQ extends Component {
         <div className={`${style.slidePanel} ${this.state.isShowAnswer ? style.visible : ''}`} onClick={e => this.closePanel(e)}>
           <Answer question={this.props.suggestion} ref={ref => this.answer = ref}></Answer>
         </div>
-      </div>
+      </Link>
     );
   }
 }
