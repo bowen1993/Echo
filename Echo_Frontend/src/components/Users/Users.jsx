@@ -19,7 +19,6 @@ class Users extends React.Component {
             version='v1.1' // Version must be in form v{major}.{minor}
             onResponse={resp => checkLogin(resp)}
             csrf={user.name} // Required for security
-            language='zh_CN'
           >
             {p => <Button {...p}>Initialize Account Kit</Button>}
           </AccountKit>

@@ -1,8 +1,24 @@
 import { Echarts } from 'Common';
 import React, { Component } from 'react';
+import { connect } from 'dva';
+import resulter from 'utils/conn';
 import style from './Demo.less';
 
 class EchartsDemo extends Component {
+  componentDidMount() {
+    const socket = new WebSocket('ws://localhost:8001');
+    socket.onopen = function () {
+      console.log(socket);
+      const option = {
+        type: 'sentimental',
+        query: 'computer',
+      };
+      socket.send(JSON.stringify(option));
+      socket.onmessage = function (event) {
+        console.log('Client received a message', event.data);
+      };
+    };
+  }
   render() {
     const option = {
       title: { text: 'ECharts 入门示例' },
@@ -23,4 +39,9 @@ class EchartsDemo extends Component {
   }
 }
 
-export default EchartsDemo;
+const mapStateToProps = ({ ws }, ownProps) => {
+  return {
+    ws: ws.ws,
+  };
+};
+export default connect(mapStateToProps)(EchartsDemo);

@@ -17,7 +17,8 @@ class SimpleEcho(WebSocket):
                 # }
                 result = sentiment.get_sentiments(jsonData['query'])
                 if result:
-                    self.sendMessage(json.dumps(result))
+                    print result
+                    self.sendMessage('hkjhkjhkhkhkhkjhkjhkjhkjhkjhkj')
             elif requestType == 'tag':
                 # data example
                 # {

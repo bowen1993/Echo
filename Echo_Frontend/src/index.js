@@ -5,6 +5,7 @@ import { getCurrentUser } from 'services/users';
 import userModel from 'models/users';
 import questionModel from 'models/questions';
 import answerModel from 'models/answers';
+import wsModel from 'models/ws';
 import RouterConfig from './router';
 
 import './index.css';
@@ -13,10 +14,6 @@ import './index.html';
 (async () => {
   const loginUser = await getCurrentUser();
   // const stompClient = WebSocket.connect();
-  const ws = new WebSocket('ws://localhost:8001');
-  ws.onopen = function (e) {
-    console.log('Connection to server opened');
-  };
   const initialState = {
     users: {
       ...userModel.state,
@@ -48,6 +45,7 @@ import './index.html';
   app.model(userModel);
   app.model(questionModel);
   app.model(answerModel);
+  app.model(wsModel);
   // 4. Router
   app.router(RouterConfig);
 
