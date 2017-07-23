@@ -12,9 +12,4 @@ router.post('/', (req, res) => {
   });
 });
 
-router.put('/vote/:answerId', (req, res) => {
-  const answerId = req.params.answerId;
-  answer;
-});
-
 module.exports = router;

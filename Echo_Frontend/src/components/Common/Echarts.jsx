@@ -37,7 +37,7 @@ class Echarts extends React.Component {
     if (typeof this.props.onChartReady === 'function') this.props.onChartReady(echartObj);
 
     // on resize
-    elementResizeEvent(this.refs.echartsDom, () => {
+    elementResizeEvent(this.echartsDom, () => {
       echartObj.resize();
     });
   }
@@ -49,7 +49,7 @@ class Echarts extends React.Component {
 
   // remove
   componentWillUnmount() {
-    echarts.dispose(this.refs.chart);
+    echarts.dispose(this.echartsDom);
   }
 
   getEchartsInstance() {
@@ -57,9 +57,9 @@ class Echarts extends React.Component {
     const { mapData } = this.props;
     if (mapData) {
       echarts.registerMap('china', mapData);
-      return echarts.init(this.refs.echartsDom, this.props.theme);
+      return echarts.init(this.echartsDom, this.props.theme);
     }
-    return echarts.getInstanceByDom(this.refs.echartsDom) || echarts.init(this.refs.echartsDom, this.props.theme);
+    return echarts.getInstanceByDom(this.echartsDom) || echarts.init(this.echartsDom, this.props.theme);
   }
 
   // render the dom
@@ -82,7 +82,7 @@ class Echarts extends React.Component {
       className += ` ${this.props.className}`;
     }
     return (
-      <div ref='echartsDom' className={className} style={this.props.style}/>
+      <div ref={ref => this.echartsDom = ref} className={className} style={this.props.style}/>
     );
   }
 }

@@ -6,6 +6,7 @@ export default {
 
   state: {
     answer: null,
+    panelVisible: false,
   },
 
   subscriptions: {
@@ -16,6 +17,9 @@ export default {
   effects: {
     *onCreate({ payload: { questionId, answer } }, { call, put }) {  // eslint-disable-line
       yield call(AnswerService.create, questionId, answer);
+      yield put({
+        type: 'qustions/onSuggest',
+      });
     },
     * onGetAnswer({ payload: { answerId } }, { call, put }) {
 
@@ -29,6 +33,8 @@ export default {
     save(state, action) {
       return { ...state, ...action.payload };
     },
+    changePanelVisible(state) {
+      return { ...state, panelVisible: !state.panelVisible };
+    },
   },
-
 };

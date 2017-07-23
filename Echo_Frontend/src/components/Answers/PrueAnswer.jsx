@@ -42,7 +42,7 @@ class PrueAnswer extends Component {
         <footer className={`${style.footer}`}>
           <ButtonGroup>
             <Button onClick={() => this.upVote()} type={this.state.isUp ? 'primary' : 'default'}>
-              <Icon style={{ fontSize: '12px' }} type='Up'/>Upvote
+              <Icon style={{ fontSize: '12px' }} type='Up'/>Upvote ( {answer && answer.up} )
               </Button>
             <Button onClick={() => this.downVote()} type={this.state.isDown ? 'danger' : 'default'}>downvote</Button>
           </ButtonGroup>

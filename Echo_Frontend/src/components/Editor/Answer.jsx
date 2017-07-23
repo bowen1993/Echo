@@ -32,25 +32,14 @@ const AnswerFrom = Form.create({})(
 
 
 class AnswerPanel extends Component {
-  constructor(props) {
-    super(props);
-    this.state = { visible: false };
-  }
 
   onOk() {
     this.form.validateFields((err, { content }) => {
       if (err) return;
 
       this.props.onCreateAnswer(this.props.question.id, content);
+      this.props.changePanelVisible();
     });
-  }
-
-  onCancel() {
-    this.setState({ visible: false });
-  }
-
-  show() {
-    this.setState({ visible: true });
   }
 
   cancelEvent(e) {
@@ -60,23 +49,32 @@ class AnswerPanel extends Component {
 
   render() {
     const { question } = this.props;
-    if (!this.state.visible) return null;
+    if (!this.props.visible) return null;
     return (
       <article className={`${style.answer}`} onClick={e => this.cancelEvent(e)}>
         <h1>{question.title}</h1>
         <AnswerFrom ref={ref => this.form = ref}/>
-        <Button type='primary' onClick={() => this.onOk()}>Submit</Button>
+        <Button className={`${style.pullRight}`} type='primary' onClick={() => this.onOk()}>Submit</Button>
       </article>
     );
   }
 }
+
+const mapStateToProps = ({ answers }, ownProps) => {
+  return {
+    visible: answers.panelVisible,
+  };
+};
 
 const mapDispatchToProps = (dispatch) => {
   return {
     onCreateAnswer: (questionId, answer) => {
       dispatch({ type: 'answers/onCreate', payload: { questionId, answer } });
     },
+    changePanelVisible: () => {
+      dispatch({ type: 'answers/changePanelVisible' });
+    },
   };
 };
 
-export default connect(null, mapDispatchToProps, undefined, { withRef: true })(AnswerPanel);
+export default connect(mapStateToProps, mapDispatchToProps, undefined, { withRef: true })(AnswerPanel);

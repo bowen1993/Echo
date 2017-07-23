@@ -10,9 +10,7 @@ class Suggestions extends Component {
 
   render() {
     return (
-      <div>
-        This is suggestion
-        {JSON.stringify(this.props.suggestions)}
+      <div className={this.props.className}>
         {
           _.map(this.props.suggestions, (suggestion, i) => {
             return <Preview key={i} suggestion={suggestion} />;

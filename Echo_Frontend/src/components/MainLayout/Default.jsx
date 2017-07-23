@@ -6,7 +6,7 @@ import style from './Default.less';
 const Default = () => {
   return (
     <div className={`${style.content}`}>
-      <Suggestion />
+      <Suggestion className={`${style.suggestion}`}/>
       <Demo />
     </div>
   );

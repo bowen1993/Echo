@@ -16,20 +16,28 @@ class PreviewQ extends Component {
     isDown: false,
     isShowAnswer: false,
   }
-  upVote() {
+  upVote(e) {
+    e.preventDefault();
     if (this.state.isUp) return;
     const downVotes = this.state.isDown ? -1 : 0;
     this.setState({ isUp: true, isDown: false });
-    this.props.onVote(1, downVotes);
+    this.props.onVote(this.props.suggestion.answers[0].id, 1, downVotes);
   }
-  downVote() {
+  downVote(e) {
+    e.preventDefault();
     if (this.state.isDown) return;
     const upVotes = this.state.isUp ? -1 : 0;
     this.setState({ isUp: false, isDown: true });
-    this.props.onVote(upVotes, 1);
+    this.props.onVote(this.props.suggestion.answers[0].id, upVotes, 1);
   }
   onCancel() {
 
+  }
+  showPanel(e) {
+    e.preventDefault();
+    this.setState({ isShowAnswer: true });
+    // this.answer.getWrappedInstance().show();
+    this.props.showPanel();
   }
   closePanel(e) {
     this.setState({ isShowAnswer: false });
@@ -37,32 +45,34 @@ class PreviewQ extends Component {
   render() {
     const { title, content, answers, id } = this.props.suggestion;
     return (
-      <Link to={`/questions/${id}`}>
-        <article className={`${style.content}`}>
-          <h1>{title}</h1>
-          <article>
-            {transContentToStr(content)}
-          </article>
-          {
-            !_.isEmpty(answers) &&
+      <div>
+        <Link to={`/questions/${id}`}>
+          <article className={`${style.content}`}>
+            <h1>{title}</h1>
             <article>
-              {transContentToStr(answers[0].content)}
+              {transContentToStr(content)}
             </article>
-          }
-          <footer className={`${style.footer}`}>
-            <ButtonGroup>
-              <Button onClick={() => this.upVote()} type={this.state.isUp ? 'primary' : 'default'}>
-                <Icon style={{ fontSize: '12px' }} type='Up'/>Upvote
+            {
+              !_.isEmpty(answers) &&
+              <article>
+                {transContentToStr(answers[0].content)}
+              </article>
+            }
+            <footer className={`${style.footer}`}>
+              <ButtonGroup>
+                <Button onClick={e => this.upVote(e)} type={this.state.isUp ? 'primary' : 'default'}>
+                  <Icon style={{ fontSize: '12px' }} type='Up'/>Upvote ( {answers[0] && answers[0].up} )
               </Button>
-              <Button onClick={() => this.downVote()} type={this.state.isDown ? 'danger' : 'default'}>downvote</Button>
-            </ButtonGroup>
-            <Button className='' onClick={() => { this.setState({ isShowAnswer: true }); this.answer.getWrappedInstance().show(); }} type='primary'>My Answer</Button>
-          </footer>
-        </article>
+                <Button onClick={e => this.downVote(e)} type={this.state.isDown ? 'danger' : 'default'}>downvote</Button>
+              </ButtonGroup>
+              <Button className='' onClick={e => this.showPanel(e)} type='primary'>My Answer</Button>
+            </footer>
+          </article>
+        </Link>
         <div className={`${style.slidePanel} ${this.state.isShowAnswer ? style.visible : ''}`} onClick={e => this.closePanel(e)}>
           <Answer question={this.props.suggestion} ref={ref => this.answer = ref}></Answer>
         </div>
-      </Link>
+      </div>
     );
   }
 }
@@ -78,6 +88,12 @@ const mapDispatchToProps = (dispatch, ownProps) => {
   return {
     onGetAnswer: (answerId) => {
       dispatch({ type: 'answers/onGetAnswer', payload: { answerId } });
+    },
+    onVote: (answerId, up, down) => {
+      dispatch({ type: 'answers/onVote', payload: { answerId, up, down } });
+    },
+    showPanel: () => {
+      dispatch({ type: 'answers/changePanelVisible' });
     },
   };
 };

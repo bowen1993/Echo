@@ -22,6 +22,8 @@ async function addAnswer2Question(content, questionId, userId) {
       author: userObj,
       createTime: Date.now(),
       lastModifyTime: Date.now(),
+      up: 0,
+      down: 0,
     });
     await answerDao.create(newAnswer);
 
@@ -46,7 +48,7 @@ async function addAnswer2Question(content, questionId, userId) {
 
 async function updateAnswer(answerId, newAnswerInfo) {
   const session = await model.getSession();
-  const answerDao = session.getDao();
+  const answerDao = session.getDao(Answer);
 
   const answerObj = await getAnswerObjectById(answerId);
   let isSuccessful = false;
@@ -70,8 +72,7 @@ async function updateAnswer(answerId, newAnswerInfo) {
 
 async function getAnswerObjectById(answerId) {
   const session = await model.getSession();
-  const answerDao = session.getDao();
-
+  const answerDao = session.getDao(Answer);
   const answerObject = await answerDao.findOne({
     id: answerId,
   });
@@ -97,4 +98,5 @@ module.exports = {
   addAnswer2Question,
   getAnswerObjectById,
   getAnswerInfo,
+  updateAnswer,
 };

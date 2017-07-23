@@ -1,18 +1,13 @@
-import model from '../models';
-import answerAction from './answerAction'
-
-const Answer = model.Answer;
+import answerAction from './answerAction';
 
 export const vote = async (answerId, up, down) => {
-  const session = await model.getSession();
-  const answerDao = session.getDao(Answer);
-
   const answerObj = await answerAction.getAnswerObjectById(answerId);
+  if (answerObj) {
+    const newAnswerInfo = {
+      up: answerObj.up + up,
+      down: answerObj.down + down,
+    };
 
-  if( answerObj ){
-    answerObj.up = answerObj.up + up;
-    answerObj.down = answerObj.down + down;
-    await answerDao.updateOne(answerObj);
+    await answerAction.updateAnswer(answerId, newAnswerInfo);
   }
-
 };

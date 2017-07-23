@@ -14,7 +14,7 @@ router.get('/question/:id', (req, res) => {
 });
 
 router.get('/suggest', (req, res) => {
-  questionAction.suggest('userid').then((questions) => {
+  questionAction.suggest().then((questions) => {
     return res.send(questions);
   });
 });

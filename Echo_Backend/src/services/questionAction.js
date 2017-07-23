@@ -71,6 +71,8 @@ async function getQuestionList(questions) {
         content: true,
         author: true,
         rate: true,
+        up: true,
+        down: true,
       },
     },
   });

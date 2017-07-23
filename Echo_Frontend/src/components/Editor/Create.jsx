@@ -38,10 +38,6 @@ const CreateFrom = Form.create({})(
 
 
 class CreateQuestionModal extends Component {
-  constructor(props) {
-    super(props);
-    this.state = { visible: false };
-  }
 
   onOk() {
     this.form.validateFields((err, values) => {
@@ -51,17 +47,14 @@ class CreateQuestionModal extends Component {
   }
 
   onCancel() {
-    this.setState({ visible: false }, () => this.form.resetFields());
-  }
-
-  showModal() {
-    this.setState({ visible: true });
+    this.props.changeVisible();
+    this.form.resetFields();
   }
 
   render() {
     return (
       <Modal
-        visible={this.state.visible}
+        visible={this.props.visible}
         title='Create A Question'
         onOk={() => this.onOk()}
         onCancel={() => this.onCancel()}
@@ -72,12 +65,21 @@ class CreateQuestionModal extends Component {
   }
 }
 
+const mapStateToProps = ({ questions }, ownProps) => {
+  return {
+    visible: questions.visible,
+  };
+};
+
 const mapDispatchToProps = (dispatch) => {
   return {
     onCreateNewQuestion: (question) => {
       dispatch({ type: 'questions/onCreate', payload: { question } });
     },
+    changeVisible: () => {
+      dispatch({ type: 'questions/changeVisible' });
+    },
   };
 };
 
-export default connect(null, mapDispatchToProps, undefined, { withRef: true })(CreateQuestionModal);
+export default connect(mapStateToProps, mapDispatchToProps, undefined, { withRef: true })(CreateQuestionModal);

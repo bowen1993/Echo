@@ -31,3 +31,5 @@ gulp.task('watch', ['es6', 'styles'], () => {
     tasks: ['es6'],
   });
 });
+
+gulp.task('build', ['es6', 'styles']);

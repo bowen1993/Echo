@@ -8,6 +8,7 @@ export default {
     suggestions: [],
     questions: [],
     question: null,
+    visible: false,
   },
 
   subscriptions: {
@@ -18,6 +19,8 @@ export default {
   effects: {
     * onCreate({ payload: { question } }, { call, put }) {
       yield call(QuestionService.create, question);
+      yield put({ type: 'onSuggest' });
+      yield put({ type: 'changeVisible' });
     },
     * onSuggest({ payload }, { call, put }) {
       const suggestions = yield call(QuestionService.suggest);
@@ -36,6 +39,9 @@ export default {
   reducers: {
     querySuccess(state, action) {
       return { ...state, ...action.payload };
+    },
+    changeVisible(state) {
+      return { ...state, visible: !state.visible };
     },
   },
 
