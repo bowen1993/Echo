@@ -11,6 +11,7 @@ RUN pip install --upgrade http://ci.tensorflow.org/view/Nightly/job/nightly-matr
 RUN pip install git+https://github.com/dpallot/simple-websocket-server.git
 COPY . /root/Echo_Backend
 WORKDIR /root/Echo_Backend
+RUN npm install -g npm
 RUN npm install
 RUN npm install -g gulp
 RUN npm install gulp
