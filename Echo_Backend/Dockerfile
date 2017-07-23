@@ -13,6 +13,8 @@ COPY . /root/Echo_Backend
 WORKDIR /root/Echo_Backend
 RUN npm install
 RUN npm install -g gulp
+RUN npm install gulp
+RUN npm install gulp-nodemon
 RUN gulp es6
 RUN gulp styles
 EXPOSE 3000 8001
