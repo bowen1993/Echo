@@ -18,5 +18,5 @@ export const getQuestionsByAuthor = (authorId) => {
 };
 
 export const getQuestionsById = (id) => {
-  return agent.get(`/api/questions/${id}`).then(res => res.body);
+  return agent.get(`/api/questions/question/${id}`).then(res => res.body);
 };

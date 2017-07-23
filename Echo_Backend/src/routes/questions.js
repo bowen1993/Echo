@@ -9,7 +9,7 @@ router.get('/', (req, res) => {
   });
 });
 
-router.get('/:id', (req, res) => {
+router.get('/question/:id', (req, res) => {
   questionAction.getQuestionInfo(req.params.id).then(question => res.send(question));
 });
 
