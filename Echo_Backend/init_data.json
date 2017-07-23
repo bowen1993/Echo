@@ -1,0 +1,976 @@
+{
+  "tags": [
+    {
+      "numId": 0, 
+      "name": ".NET Framework"
+    }, 
+    {
+      "numId": 1, 
+      "name": "ACM International Collegiate Programming Contest (ICPC)"
+    }, 
+    {
+      "numId": 2, 
+      "name": "Abstraction (computer science)"
+    }, 
+    {
+      "numId": 3, 
+      "name": "Algorithm Programming Advice"
+    }, 
+    {
+      "numId": 4, 
+      "name": "Algorithmic Problems"
+    }, 
+    {
+      "numId": 5, 
+      "name": "Algorithms"
+    }, 
+    {
+      "numId": 6, 
+      "name": "Algorithms for Competitive Programming"
+    }, 
+    {
+      "numId": 7, 
+      "name": "Algorithms in C#"
+    }, 
+    {
+      "numId": 8, 
+      "name": "Algorithms in C++"
+    }, 
+    {
+      "numId": 9, 
+      "name": "Analyzing Big Data"
+    }, 
+    {
+      "numId": 10, 
+      "name": "Android (operating system)"
+    }, 
+    {
+      "numId": 11, 
+      "name": "Android Application Development"
+    }, 
+    {
+      "numId": 12, 
+      "name": "Android Application Development Services"
+    }, 
+    {
+      "numId": 13, 
+      "name": "Android Applications"
+    }, 
+    {
+      "numId": 14, 
+      "name": "Android Apps Vs. iPhone Apps"
+    }, 
+    {
+      "numId": 15, 
+      "name": "AngularJS"
+    }, 
+    {
+      "numId": 16, 
+      "name": "Apache Hadoop"
+    }, 
+    {
+      "numId": 17, 
+      "name": "App Development"
+    }, 
+    {
+      "numId": 18, 
+      "name": "Apple Products and Services"
+    }, 
+    {
+      "numId": 19, 
+      "name": "Application Programming Interfaces (API)"
+    }, 
+    {
+      "numId": 20, 
+      "name": "Arrays (programming)"
+    }, 
+    {
+      "numId": 21, 
+      "name": "Artificial General Intelligence"
+    }, 
+    {
+      "numId": 22, 
+      "name": "Artificial Intelligence"
+    }, 
+    {
+      "numId": 23, 
+      "name": "Artificial Neural Networks"
+    }, 
+    {
+      "numId": 24, 
+      "name": "Asteria AI (company)"
+    }, 
+    {
+      "numId": 25, 
+      "name": "Augmented Reality"
+    }, 
+    {
+      "numId": 26, 
+      "name": "Autonomous"
+    }, 
+    {
+      "numId": 27, 
+      "name": "Autonomous Driving"
+    }, 
+    {
+      "numId": 28, 
+      "name": "Babeljs"
+    }, 
+    {
+      "numId": 29, 
+      "name": "Back-End Development"
+    }, 
+    {
+      "numId": 30, 
+      "name": "Backbone.js"
+    }, 
+    {
+      "numId": 31, 
+      "name": "Bayesian Networks"
+    }, 
+    {
+      "numId": 32, 
+      "name": "Becoming Successful"
+    }, 
+    {
+      "numId": 33, 
+      "name": "Big Data"
+    }, 
+    {
+      "numId": 34, 
+      "name": "Big-O Notation"
+    }, 
+    {
+      "numId": 35, 
+      "name": "Browser Cookies"
+    }, 
+    {
+      "numId": 36, 
+      "name": "Bubble Sort"
+    }, 
+    {
+      "numId": 37, 
+      "name": "C (programming language)"
+    }, 
+    {
+      "numId": 38, 
+      "name": "C# (programming language)"
+    }, 
+    {
+      "numId": 39, 
+      "name": "C# Vs. Java"
+    }, 
+    {
+      "numId": 40, 
+      "name": "C++ (programming language)"
+    }, 
+    {
+      "numId": 41, 
+      "name": "C++ Vs. Java"
+    }, 
+    {
+      "numId": 42, 
+      "name": "C++ in Competitive Programming"
+    }, 
+    {
+      "numId": 43, 
+      "name": "CSS Frameworks"
+    }, 
+    {
+      "numId": 44, 
+      "name": "CSS3"
+    }, 
+    {
+      "numId": 45, 
+      "name": "Callback"
+    }, 
+    {
+      "numId": 46, 
+      "name": "CanJS"
+    }, 
+    {
+      "numId": 47, 
+      "name": "Cascading Style Sheets"
+    }, 
+    {
+      "numId": 48, 
+      "name": "Chrome OS"
+    }, 
+    {
+      "numId": 49, 
+      "name": "Classification (machine learning)"
+    }, 
+    {
+      "numId": 50, 
+      "name": "Cluster analysis"
+    }, 
+    {
+      "numId": 51, 
+      "name": "Clustering"
+    }, 
+    {
+      "numId": 52, 
+      "name": "Code Comments"
+    }, 
+    {
+      "numId": 53, 
+      "name": "Code Debugging"
+    }, 
+    {
+      "numId": 54, 
+      "name": "Code Design"
+    }, 
+    {
+      "numId": 55, 
+      "name": "Code Outsourcing"
+    }, 
+    {
+      "numId": 56, 
+      "name": "Code Reviews"
+    }, 
+    {
+      "numId": 57, 
+      "name": "CodeChef"
+    }, 
+    {
+      "numId": 58, 
+      "name": "CodeChef Vs. Codeforces"
+    }, 
+    {
+      "numId": 59, 
+      "name": "CodeChef Vs. Sphere Online Judge"
+    }, 
+    {
+      "numId": 60, 
+      "name": "Codeforces"
+    }, 
+    {
+      "numId": 61, 
+      "name": "CoffeeScript"
+    }, 
+    {
+      "numId": 62, 
+      "name": "Cognitive Computing"
+    }, 
+    {
+      "numId": 63, 
+      "name": "Cognitive Science"
+    }, 
+    {
+      "numId": 64, 
+      "name": "Cold Fusion (programming language)"
+    }, 
+    {
+      "numId": 65, 
+      "name": "Competitive Programmers"
+    }, 
+    {
+      "numId": 66, 
+      "name": "Competitive Programming"
+    }, 
+    {
+      "numId": 67, 
+      "name": "Compilers"
+    }, 
+    {
+      "numId": 68, 
+      "name": "Compression Algorithms"
+    }, 
+    {
+      "numId": 69, 
+      "name": "Computer Architecture"
+    }, 
+    {
+      "numId": 70, 
+      "name": "Computer Crashes"
+    }, 
+    {
+      "numId": 71, 
+      "name": "Computer Engineering"
+    }, 
+    {
+      "numId": 72, 
+      "name": "Computer Engineers"
+    }, 
+    {
+      "numId": 73, 
+      "name": "Computer Hacking (security)"
+    }, 
+    {
+      "numId": 74, 
+      "name": "Computer Hardware"
+    }, 
+    {
+      "numId": 75, 
+      "name": "Computer Networking"
+    }, 
+    {
+      "numId": 76, 
+      "name": "Computer Programmers"
+    }, 
+    {
+      "numId": 77, 
+      "name": "Computer Programming"
+    }, 
+    {
+      "numId": 78, 
+      "name": "Computer Programming Advice"
+    }, 
+    {
+      "numId": 79, 
+      "name": "Computer Programming Projects"
+    }, 
+    {
+      "numId": 80, 
+      "name": "Computer Programming Skills"
+    }, 
+    {
+      "numId": 81, 
+      "name": "Computer Programming and Software Engineers"
+    }, 
+    {
+      "numId": 82, 
+      "name": "Computer Security"
+    }, 
+    {
+      "numId": 83, 
+      "name": "Convolutional Neural Networks (CNNs)"
+    }, 
+    {
+      "numId": 84, 
+      "name": "Cybercrime"
+    }, 
+    {
+      "numId": 85, 
+      "name": "Dark Web"
+    }, 
+    {
+      "numId": 86, 
+      "name": "Data"
+    }, 
+    {
+      "numId": 87, 
+      "name": "Data Analysis"
+    }, 
+    {
+      "numId": 88, 
+      "name": "Data Compression"
+    }, 
+    {
+      "numId": 89, 
+      "name": "Data Mining"
+    }, 
+    {
+      "numId": 90, 
+      "name": "Data Science"
+    }, 
+    {
+      "numId": 91, 
+      "name": "Data Scientists"
+    }, 
+    {
+      "numId": 92, 
+      "name": "Data Storage"
+    }, 
+    {
+      "numId": 93, 
+      "name": "Data Structures"
+    }, 
+    {
+      "numId": 94, 
+      "name": "Database Systems"
+    }, 
+    {
+      "numId": 95, 
+      "name": "Datasets"
+    }, 
+    {
+      "numId": 96, 
+      "name": "Deep Learning"
+    }, 
+    {
+      "numId": 97, 
+      "name": "Deep Web"
+    }, 
+    {
+      "numId": 98, 
+      "name": "Desktop Applications"
+    }, 
+    {
+      "numId": 99, 
+      "name": "Dialog Systems (software)"
+    }, 
+    {
+      "numId": 100, 
+      "name": "Discrete Algorithms"
+    }, 
+    {
+      "numId": 101, 
+      "name": "Distributed Denial of Service (DDoS)"
+    }, 
+    {
+      "numId": 102, 
+      "name": "Django (web framework)"
+    }, 
+    {
+      "numId": 103, 
+      "name": "Docker"
+    }, 
+    {
+      "numId": 104, 
+      "name": "Document Object Model (DOM)"
+    }, 
+    {
+      "numId": 105, 
+      "name": "Dojo (JavaScript toolkit)"
+    }, 
+    {
+      "numId": 106, 
+      "name": "Dynamic Programming (DP)"
+    }, 
+    {
+      "numId": 107, 
+      "name": "Ember.js"
+    }, 
+    {
+      "numId": 108, 
+      "name": "Ethernet"
+    }, 
+    {
+      "numId": 109, 
+      "name": "Express (Node.js web framework)"
+    }, 
+    {
+      "numId": 110, 
+      "name": "Facebook AI Research"
+    }, 
+    {
+      "numId": 111, 
+      "name": "Facebook Web Development"
+    }, 
+    {
+      "numId": 112, 
+      "name": "File Transfer Protocol"
+    }, 
+    {
+      "numId": 113, 
+      "name": "Front-End Web Development"
+    }, 
+    {
+      "numId": 114, 
+      "name": "Full Stack"
+    }, 
+    {
+      "numId": 115, 
+      "name": "Functional Programming"
+    }, 
+    {
+      "numId": 116, 
+      "name": "GPU Computation"
+    }, 
+    {
+      "numId": 117, 
+      "name": "Git (version control)"
+    }, 
+    {
+      "numId": 118, 
+      "name": "GitHub"
+    }, 
+    {
+      "numId": 119, 
+      "name": "Go (programming language)"
+    }, 
+    {
+      "numId": 120, 
+      "name": "Gradient Descent"
+    }, 
+    {
+      "numId": 121, 
+      "name": "Graph Algorithms"
+    }, 
+    {
+      "numId": 122, 
+      "name": "Graph Theory"
+    }, 
+    {
+      "numId": 123, 
+      "name": "Graphical User Interfaces"
+    }, 
+    {
+      "numId": 124, 
+      "name": "Graphics Processing Unit"
+    }, 
+    {
+      "numId": 125, 
+      "name": "HTML"
+    }, 
+    {
+      "numId": 126, 
+      "name": "HTML, CSS, Javascript"
+    }, 
+    {
+      "numId": 127, 
+      "name": "HTML5"
+    }, 
+    {
+      "numId": 128, 
+      "name": "HTTP"
+    }, 
+    {
+      "numId": 129, 
+      "name": "Hacking (programming style)"
+    }, 
+    {
+      "numId": 130, 
+      "name": "Haskell (programming language)"
+    }, 
+    {
+      "numId": 131, 
+      "name": "Heaps (computer science)"
+    }, 
+    {
+      "numId": 132, 
+      "name": "Image Compression"
+    }, 
+    {
+      "numId": 133, 
+      "name": "Image Processing"
+    }, 
+    {
+      "numId": 134, 
+      "name": "Image Recognition"
+    }, 
+    {
+      "numId": 135, 
+      "name": "Images"
+    }, 
+    {
+      "numId": 136, 
+      "name": "Infinite Loop Programs"
+    }, 
+    {
+      "numId": 137, 
+      "name": "Information Security"
+    }, 
+    {
+      "numId": 138, 
+      "name": "JSON Web Token"
+    }, 
+    {
+      "numId": 139, 
+      "name": "JVM Languages"
+    }, 
+    {
+      "numId": 140, 
+      "name": "Java (programming language)"
+    }, 
+    {
+      "numId": 141, 
+      "name": "Java (software platform)"
+    }, 
+    {
+      "numId": 142, 
+      "name": "Java CSS Parser"
+    }, 
+    {
+      "numId": 143, 
+      "name": "JavaScript (programming language)"
+    }, 
+    {
+      "numId": 144, 
+      "name": "JavaScript Frameworks"
+    }, 
+    {
+      "numId": 145, 
+      "name": "Jeff Dean"
+    }, 
+    {
+      "numId": 146, 
+      "name": "Linux"
+    }, 
+    {
+      "numId": 147, 
+      "name": "Local Area Networks"
+    }, 
+    {
+      "numId": 148, 
+      "name": "Locating Specific Algorithms"
+    }, 
+    {
+      "numId": 149, 
+      "name": "MEAN framework"
+    }, 
+    {
+      "numId": 150, 
+      "name": "MEAN.JS"
+    }, 
+    {
+      "numId": 151, 
+      "name": "Machine Languages"
+    }, 
+    {
+      "numId": 152, 
+      "name": "Machine Learning"
+    }, 
+    {
+      "numId": 153, 
+      "name": "Machine Learning Algorithms"
+    }, 
+    {
+      "numId": 154, 
+      "name": "Mean Stack"
+    }, 
+    {
+      "numId": 155, 
+      "name": "Meteor (Javascript platform)"
+    }, 
+    {
+      "numId": 156, 
+      "name": "Mobile Application Development"
+    }, 
+    {
+      "numId": 157, 
+      "name": "Mobile Application Development Services"
+    }, 
+    {
+      "numId": 158, 
+      "name": "Mobile Applications"
+    }, 
+    {
+      "numId": 159, 
+      "name": "Mobile Web Development"
+    }, 
+    {
+      "numId": 160, 
+      "name": "Model-View-Controller Pattern"
+    }, 
+    {
+      "numId": 161, 
+      "name": "MongoDB"
+    }, 
+    {
+      "numId": 162, 
+      "name": "MySQL"
+    }, 
+    {
+      "numId": 163, 
+      "name": "Natural Language Processing"
+    }, 
+    {
+      "numId": 164, 
+      "name": "Network Security"
+    }, 
+    {
+      "numId": 165, 
+      "name": "Networks"
+    }, 
+    {
+      "numId": 166, 
+      "name": "Networks and Cybersecurity"
+    }, 
+    {
+      "numId": 167, 
+      "name": "NoSQL"
+    }, 
+    {
+      "numId": 168, 
+      "name": "Node.js"
+    }, 
+    {
+      "numId": 169, 
+      "name": "Node.js Modules"
+    }, 
+    {
+      "numId": 170, 
+      "name": "OAuth"
+    }, 
+    {
+      "numId": 171, 
+      "name": "Object-Oriented Programming"
+    }, 
+    {
+      "numId": 172, 
+      "name": "Open Source"
+    }, 
+    {
+      "numId": 173, 
+      "name": "Open Source Software"
+    }, 
+    {
+      "numId": 174, 
+      "name": "Operating Systems"
+    }, 
+    {
+      "numId": 175, 
+      "name": "PHP (programming language)"
+    }, 
+    {
+      "numId": 176, 
+      "name": "PHP Vs. Java"
+    }, 
+    {
+      "numId": 177, 
+      "name": "PHP Vs. JavaScript"
+    }, 
+    {
+      "numId": 178, 
+      "name": "Problem Solving in Computer Programming"
+    }, 
+    {
+      "numId": 179, 
+      "name": "Programming Computer Applications"
+    }, 
+    {
+      "numId": 180, 
+      "name": "Programming Frameworks"
+    }, 
+    {
+      "numId": 181, 
+      "name": "Programming Language Comparisons"
+    }, 
+    {
+      "numId": 182, 
+      "name": "Python (programming language)"
+    }, 
+    {
+      "numId": 183, 
+      "name": "Python Libraries"
+    }, 
+    {
+      "numId": 184, 
+      "name": "Python Vs. C++"
+    }, 
+    {
+      "numId": 185, 
+      "name": "Python Vs. Java"
+    }, 
+    {
+      "numId": 186, 
+      "name": "Python Vs. PHP"
+    }, 
+    {
+      "numId": 187, 
+      "name": "Python Web Frameworks"
+    }, 
+    {
+      "numId": 188, 
+      "name": "R (programming language)"
+    }, 
+    {
+      "numId": 189, 
+      "name": "REST (software architectural style)"
+    }, 
+    {
+      "numId": 190, 
+      "name": "React (JavaScript library)"
+    }, 
+    {
+      "numId": 191, 
+      "name": "React Native"
+    }, 
+    {
+      "numId": 192, 
+      "name": "Regular Expressions (computing)"
+    }, 
+    {
+      "numId": 193, 
+      "name": "Reinforcement Learning"
+    }, 
+    {
+      "numId": 194, 
+      "name": "Responsive Web Design"
+    }, 
+    {
+      "numId": 195, 
+      "name": "Robotics"
+    }, 
+    {
+      "numId": 196, 
+      "name": "Robots"
+    }, 
+    {
+      "numId": 197, 
+      "name": "Ruby (programming language)"
+    }, 
+    {
+      "numId": 198, 
+      "name": "Ruby on Rails (web framework)"
+    }, 
+    {
+      "numId": 199, 
+      "name": "Ruby vs. Python"
+    }, 
+    {
+      "numId": 200, 
+      "name": "STL (C++)"
+    }, 
+    {
+      "numId": 201, 
+      "name": "Scripting (programming)"
+    }, 
+    {
+      "numId": 202, 
+      "name": "Search Algorithms"
+    }, 
+    {
+      "numId": 203, 
+      "name": "Sentiment Analysis"
+    }, 
+    {
+      "numId": 204, 
+      "name": "Server-Side JavaScript"
+    }, 
+    {
+      "numId": 205, 
+      "name": "Software Architecture"
+    }, 
+    {
+      "numId": 206, 
+      "name": "Software Bugs"
+    }, 
+    {
+      "numId": 207, 
+      "name": "Software Design"
+    }, 
+    {
+      "numId": 208, 
+      "name": "Software Development"
+    }, 
+    {
+      "numId": 209, 
+      "name": "Software Development Process"
+    }, 
+    {
+      "numId": 210, 
+      "name": "Software Engineering Best Practices"
+    }, 
+    {
+      "numId": 211, 
+      "name": "Software Engineering Tools"
+    }, 
+    {
+      "numId": 212, 
+      "name": "Software Engineers and Developers"
+    }, 
+    {
+      "numId": 213, 
+      "name": "Software Testing"
+    }, 
+    {
+      "numId": 214, 
+      "name": "Sorting Algorithms"
+    }, 
+    {
+      "numId": 215, 
+      "name": "Source Code"
+    }, 
+    {
+      "numId": 216, 
+      "name": "Supercomputers"
+    }, 
+    {
+      "numId": 217, 
+      "name": "Support Vector Machines"
+    }, 
+    {
+      "numId": 218, 
+      "name": "Swift (programming language)"
+    }, 
+    {
+      "numId": 219, 
+      "name": "TensorFlow (software library)"
+    }, 
+    {
+      "numId": 220, 
+      "name": "Time Complexity"
+    }, 
+    {
+      "numId": 221, 
+      "name": "Trees (data structures)"
+    }, 
+    {
+      "numId": 222, 
+      "name": "TypeScript"
+    }, 
+    {
+      "numId": 223, 
+      "name": "Typefaces and Fonts"
+    }, 
+    {
+      "numId": 224, 
+      "name": "User Experience"
+    }, 
+    {
+      "numId": 225, 
+      "name": "User Interfaces"
+    }, 
+    {
+      "numId": 226, 
+      "name": "Video Compression"
+    }, 
+    {
+      "numId": 227, 
+      "name": "Vue.js"
+    }, 
+    {
+      "numId": 228, 
+      "name": "Web Applications"
+    }, 
+    {
+      "numId": 229, 
+      "name": "Web Design"
+    }, 
+    {
+      "numId": 230, 
+      "name": "Web Developers"
+    }, 
+    {
+      "numId": 231, 
+      "name": "Web Development Advice"
+    }, 
+    {
+      "numId": 232, 
+      "name": "Web Development Companies"
+    }, 
+    {
+      "numId": 233, 
+      "name": "Web Development Educational Resources"
+    }, 
+    {
+      "numId": 234, 
+      "name": "Web Development Website Recommendations"
+    }, 
+    {
+      "numId": 235, 
+      "name": "Wi-Fi"
+    }, 
+    {
+      "numId": 236, 
+      "name": "World Wide Web"
+    }, 
+    {
+      "numId": 237, 
+      "name": "YUI (Yahoo! User Interface) Library"
+    }, 
+    {
+      "numId": 238, 
+      "name": "iOS"
+    }, 
+    {
+      "numId": 239, 
+      "name": "iOS Application Development"
+    }, 
+    {
+      "numId": 240, 
+      "name": "iOS vs. Android (operating system)"
+    }, 
+    {
+      "numId": 241, 
+      "name": "jQuery"
+    }, 
+    {
+      "numId": 242, 
+      "name": "npm (package manager)"
+    }
+  ]
+}
