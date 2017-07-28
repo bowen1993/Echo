@@ -23,6 +23,7 @@
     "js-base64": "^2.1.9",
     "moniker": "^0.1.2",
     "morgan": "~1.6.1",
+    "nodejs-websocket": "^1.7.1",
     "nodemon": "^1.11.0",
     "querystring": "^0.2.0",
     "request": "^2.81.0",
