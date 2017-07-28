@@ -2474,6 +2474,10 @@ node-pre-gyp@^0.6.36:
     tar "^2.2.1"
     tar-pack "^3.4.0"
 
+nodejs-websocket@^1.7.1:
+  version "1.7.1"
+  resolved "http://registry.npm.taobao.org/nodejs-websocket/download/nodejs-websocket-1.7.1.tgz#cccfbba823bf1cfa9680f168ab7ab53121e48410"
+
 nodemon@^1.10.2, nodemon@^1.11.0:
   version "1.11.0"
   resolved "http://registry.npm.taobao.org/nodemon/download/nodemon-1.11.0.tgz#226c562bd2a7b13d3d7518b49ad4828a3623d06c"
