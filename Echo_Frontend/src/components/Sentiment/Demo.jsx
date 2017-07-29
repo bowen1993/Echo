@@ -3,27 +3,18 @@ import echarts from 'echarts/lib/echarts';
 import React, { Component } from 'react';
 import { connect } from 'dva';
 import resulter from 'utils/conn';
-import { Input, Spin } from 'antd';
+import { Input } from 'antd';
 import { rawDataFilter } from 'utils/sentiment';
 import style from './Demo.less';
 
 class EchartsDemo extends Component {
-  state = {
-    loading: false,
-  }
+
   componentDidMount() {
     // this.props.saveSentimentTag(rawDataFilter(data));
   }
 
-  componentWillReceiveProps(nextProps) {
-    if (nextProps.posData !== this.props.posData) {
-      this.setState({ loading: false });
-    }
-  }
-
   sendSentimentTag(query) {
     const socket = new WebSocket('ws://localhost:8001');
-    this.setState({ loading: true });
     socket.onopen = () => {
       const option = {
         type: 'sentimental',
@@ -112,10 +103,10 @@ class EchartsDemo extends Component {
       ],
     };
     return (
-      <Spin spinning={this.state.loading}>
+      <div>
         <Input.Search placeholder='please input sentiment tag (eg: c++)' onSearch={value => this.sendSentimentTag(value)} />
         <Echarts option={option} className={`${style.echarts}`}/>
-      </Spin>
+      </div>
     );
   }
 }
