@@ -3,7 +3,7 @@
 echo "Start Redis Server..."
 redis-server &
 echo "Start MongoDB"
-sudo mongod --quiet &
+mongod --quiet &
 sleep 2;
 cd /root/Echo_Backend
 echo "MongoDB started, loading init data...."
