@@ -13,9 +13,13 @@ RUN mkdir /data/db
 COPY . /root/Echo_Backend
 WORKDIR /root/Echo_Backend
 RUN npm install -g npm
+USER node
+RUN mkdir /home/node/.npm-global
+ENV PATH=/home/node/.npm-global/bin:$PATH
+ENV NPM_CONFIG_PREFIX=/home/node/.npm-global
+RUN npm install --quiet --no-progress -g gulp norch
+USER root
 RUN npm install
-RUN npm install -g gulp
-RUN npm install -g norch
 RUN npm install gulp
 RUN npm install gulp-nodemon
 RUN gulp es6
