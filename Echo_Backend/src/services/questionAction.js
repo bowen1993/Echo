@@ -1,5 +1,6 @@
 import model from '../models';
 import userAction from './userAction';
+import norchAction from './norchAction';
 
 const Question = model.Question;
 
@@ -23,6 +24,11 @@ async function createQuestion(title, userId, content = null) {
   let result = null;
   if (newQuestion) {
     result = await newQuestion.$extract({ recursive: true });
+    norchAction.saveInfo2Norch({
+      id:result.id,
+      title:result.title,
+      content:result.content
+    });
   }
 
   return new Promise((resolve) => {
@@ -137,7 +143,6 @@ async function getQuestions(params) {
     resolve(questions);
   });
 }
-
 
 module.exports = {
   createQuestion,

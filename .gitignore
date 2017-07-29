@@ -126,3 +126,7 @@ include/
 pip-selfcheck.json
 
 *.pyc
+Echo_Backend/norch-index/*
+Echo_Backend/norch-index
+
+

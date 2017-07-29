@@ -1,5 +1,7 @@
 import database from './database'
+import search from './search'
 
 module.exports = {
-    'database': database
+    'database': database,
+    'search': search
 };

@@ -15,6 +15,7 @@ WORKDIR /root/Echo_Backend
 RUN npm install -g npm
 RUN npm install
 RUN npm install -g gulp
+RUN npm install -g norch
 RUN npm install gulp
 RUN npm install gulp-nodemon
 RUN gulp es6
