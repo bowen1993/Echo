@@ -2,10 +2,13 @@ import dva from 'dva';
 import { message } from 'antd';
 import createLoading from 'dva-loading';
 import { getCurrentUser } from 'services/users';
+
 import userModel from 'models/users';
 import questionModel from 'models/questions';
 import answerModel from 'models/answers';
 import wsModel from 'models/ws';
+import sentimentModel from 'models/sentiment';
+
 import RouterConfig from './router';
 
 import './index.css';
@@ -46,6 +49,8 @@ import './index.html';
   app.model(questionModel);
   app.model(answerModel);
   app.model(wsModel);
+  app.model(sentimentModel);
+
   // 4. Router
   app.router(RouterConfig);
 
