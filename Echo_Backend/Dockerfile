@@ -7,7 +7,7 @@ RUN apt-get install python-pip python-dev g++ build-essential redis-server -y
 RUN apt-get install git -y
 RUN pip install --upgrade pip
 RUN pip install pymongo numpy Algorithmia websocket_server
-RUN pip install --upgrade http://ci.tensorflow.org/view/Nightly/job/nightly-matrix-cpu/TF_BUILD_IS_OPT=OPT,TF_BUILD_IS_PIP=PIP,TF_BUILD_PYTHON_VERSION=PYTHON2,label=cpu-slave/lastSuccessfulBuild/artifact/pip_test/whl/tensorflow-1.3.0rc0-cp27-none-linux_x86_64.whl
+RUN pip install --upgrade https://storage.googleapis.com/tensorflow/linux/cpu/tensorflow-1.2.1-cp27-none-linux_x86_64.whl
 RUN mkdir /data
 RUN mkdir /data/db
 COPY . /root/Echo_Backend
