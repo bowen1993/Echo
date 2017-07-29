@@ -24,7 +24,6 @@ const getSentiments = function (topic) {
   const client = Algorithmia.client(API_KEY);
 
   client.algo('nlp/AnalyzeTweets/0.1.9').pipe(twitterInput).then((output) => {
-    console.log('output', output);
     return output;
   });
 };
