@@ -20,3 +20,7 @@ export const getQuestionsByAuthor = (authorId) => {
 export const getQuestionsById = (id) => {
   return agent.get(`/api/questions/question/${id}`).then(res => res.body);
 };
+
+export const search = (keywords) => {
+  return agent.get('search/question').query({ keywords }).then(res => res.body);
+};

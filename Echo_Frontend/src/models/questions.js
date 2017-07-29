@@ -9,6 +9,7 @@ export default {
     questions: [],
     question: null,
     visible: false,
+    searchQues: [],
   },
 
   subscriptions: {
@@ -33,6 +34,10 @@ export default {
     * onGetQuestionById({ payload: { id } }, { call, put }) {
       const question = yield call(QuestionService.getQuestionsById, id);
       yield put({ type: 'querySuccess', payload: { question } });
+    },
+    * onSearch({ payload: { keys } }, { call, put }) {
+      const searchQues = yield call(QuestionService.search, keys);
+      yield put({ type: 'querySuccess', payload: { searchQues } });
     },
   },
 
