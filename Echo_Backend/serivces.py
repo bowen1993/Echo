@@ -1,45 +1,58 @@
-from SimpleWebSocketServer import SimpleWebSocketServer, WebSocket
 import json
 from algorithm.sentimental import sentiment
 from algorithm.textProcessing import text_tag
 import traceback
+from websocket_server import WebsocketServer
 
-class SimpleEcho(WebSocket):
-    def handleMessage(self):
-        try:
-            jsonData = json.loads(self.data)
-            requestType = jsonData['type']
-            if requestType == 'sentimental':
-                # data example
-                # {
-                #     "type":"sentimental",
-                #     "query":"your topic"
-                # }
-                result = sentiment.get_sentiments(jsonData['query'])
-                if result:
-                    print result
-                    self.sendMessage('hkjhkjhkhkhkhkjhkjhkjhkjhkjhkj')
-            elif requestType == 'tag':
-                # data example
-                # {
-                #     "type":"tag",
-                #     "query":"text to be tagged"
-                # }
-                result = text_tag.predict(jsonData['query'])
-                if result:
-                    print result
-                    self.sendMessage(json.dumps(result))
-        except:
-            traceback.print_exc()
-            print 'error'
-            pass
-    
-    def handleConnected(self):
-        print(self.address, 'connected')
-    
-    def handleClose(self):
-        print(self.address, 'closed')
+# Called for every client connecting (after handshake)
 
 
-server = SimpleWebSocketServer('', 8001, SimpleEcho)
-server.serveforever()
+def new_client(client, server):
+    print("New client connected and was given id %d" % client['id'])
+    server.send_message_to_all("Hey all, a new client has joined us")
+
+
+# Called for every client disconnecting
+def client_left(client, server):
+    print("Client(%d) disconnected" % client['id'])
+
+
+# Called when a client sends a message
+def message_received(client, server, message):
+    print("Client(%d) said: %s" % (client['id'], message))
+
+    try:
+        jsonData = json.loads(message)
+        requestType = jsonData['type']
+        if requestType == 'sentimental':
+            # data example
+            # {
+            #     "type":"sentimental",
+            #     "query":"your topic"
+            # }
+            result = sentiment.get_sentiments(jsonData['query'])
+            if result:
+                print result
+                server.send_message(client, json.dumps(result))
+        elif requestType == 'tag':
+            # data example
+            # {
+            #     "type":"tag",
+            #     "query":"text to be tagged"
+            # }
+            result = text_tag.predict(jsonData['query'])
+            if result:
+                print result
+                server.send_message(client, json.dumps(result))
+    except:
+        traceback.print_exc()
+        print 'error'
+        pass
+
+
+PORT=8001
+server = WebsocketServer(PORT)
+server.set_fn_new_client(new_client)
+server.set_fn_client_left(client_left)
+server.set_fn_message_received(message_received)
+server.run_forever()
